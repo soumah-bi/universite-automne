@@ -1,0 +1,1608 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Université d'Automne — Saint-Étienne · 30 & 31 octobre 2026</title>
+<meta name="description" content="Événement culturel, intellectuel et diplomatique réunissant experts africains et français à Saint-Étienne les 30 et 31 octobre 2026.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --navy: #1B2E4B;
+  --navy-deep: #0F1E33;
+  --navy-light: #2A4366;
+  --olive: #7A8B3F;
+  --olive-light: #94A555;
+  --olive-deep: #5E6B30;
+  --ocre: #D4922A;
+  --ocre-light: #E5A847;
+  --ocre-deep: #B0741A;
+  --cream: #F8F6F1;
+  --cream-warm: #F2EDE2;
+  --paper: #FBFAF6;
+  --ink: #1A1A1A;
+  --muted: #5A6878;
+
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Outfit', system-ui, sans-serif;
+
+  --max: 1280px;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.6;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+
+/* ============ NAVIGATION ============ */
+header.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(251, 250, 246, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(27, 46, 75, 0.08);
+  transition: all 0.3s ease;
+}
+.nav-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0.9rem var(--pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--navy);
+}
+.nav-logo img { height: 44px; width: auto; }
+.nav-logo-text {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.nav-logo-text small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.7rem;
+  font-weight: 400;
+  color: var(--ocre-deep);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  text-decoration: none;
+  color: var(--navy);
+  font-size: 0.92rem;
+  font-weight: 500;
+  position: relative;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -2px;
+  height: 2px;
+  width: 0;
+  background: var(--ocre);
+  transition: width 0.3s ease;
+}
+.nav-links a:hover { color: var(--ocre-deep); }
+.nav-links a:hover::after { width: 100%; }
+
+.nav-cta {
+  background: var(--navy);
+  color: var(--cream);
+  padding: 0.65rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+.nav-cta:hover {
+  background: var(--ocre);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(212, 146, 42, 0.3);
+}
+
+.burger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
+.burger span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: 0.3s; }
+
+@media (max-width: 900px) {
+  .nav-links, .nav-cta { display: none; }
+  .burger { display: block; }
+  .nav-links.open {
+    display: flex;
+    position: absolute;
+    top: 100%; left: 0; right: 0;
+    background: var(--cream);
+    flex-direction: column;
+    padding: 1.5rem var(--pad);
+    border-bottom: 1px solid rgba(27,46,75,0.1);
+  }
+}
+
+/* ============ HERO ============ */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  background: var(--navy-deep);
+  color: var(--cream);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding: 8rem var(--pad) 4rem;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(212, 146, 42, 0.18), transparent 50%),
+    radial-gradient(ellipse at 10% 80%, rgba(122, 139, 63, 0.22), transparent 55%),
+    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
+  z-index: 0;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(248, 246, 241, 0.06) 1px, transparent 0);
+  background-size: 32px 32px;
+  z-index: 0;
+}
+
+.hero-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+@media (max-width: 980px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.82rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ocre-light);
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+  opacity: 0;
+  animation: fadeUp 0.8s ease 0.1s forwards;
+}
+.hero-eyebrow::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--ocre);
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.2s forwards;
+}
+.hero h1 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--olive-light);
+  font-variation-settings: "SOFT" 100;
+}
+.hero h1 .accent {
+  color: var(--ocre-light);
+  font-style: italic;
+}
+
+.hero-sub {
+  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
+  max-width: 540px;
+  color: rgba(248, 246, 241, 0.85);
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.35s forwards;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.45s forwards;
+}
+.meta-item {
+  border-left: 2px solid var(--ocre);
+  padding-left: 1rem;
+}
+.meta-item .label {
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--olive-light);
+  margin-bottom: 0.25rem;
+}
+.meta-item .value {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 500;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  opacity: 0;
+  animation: fadeUp 0.9s ease 0.55s forwards;
+}
+.btn {
+  padding: 0.95rem 1.8rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+.btn-primary {
+  background: var(--ocre);
+  color: var(--navy-deep);
+}
+.btn-primary:hover {
+  background: var(--ocre-light);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(212, 146, 42, 0.35);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(248, 246, 241, 0.3);
+}
+.btn-ghost:hover {
+  background: rgba(248, 246, 241, 0.08);
+  border-color: var(--cream);
+}
+
+/* Hero visual side */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  opacity: 0;
+  animation: fadeIn 1.2s ease 0.6s forwards;
+}
+.hero-card {
+  position: absolute;
+  background: rgba(248, 246, 241, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(248, 246, 241, 0.12);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+.hero-card-main {
+  inset: 10% 5% 30% 15%;
+  background: var(--cream);
+  color: var(--navy-deep);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
+  transform: rotate(-2deg);
+}
+.hero-card-main .date-big {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.hero-card-main .date-big em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--olive-deep);
+  font-size: 0.6em;
+}
+.hero-card-main .city {
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ocre-deep);
+  font-weight: 600;
+}
+
+.hero-card-accent {
+  bottom: 8%;
+  right: 0;
+  width: 55%;
+  background: var(--olive);
+  color: var(--cream);
+  border: none;
+  transform: rotate(3deg);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+}
+.hero-card-accent .num {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 600;
+  line-height: 1;
+}
+.hero-card-accent .lbl {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-top: 0.5rem;
+  opacity: 0.9;
+}
+
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(20px); }
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+  from { opacity: 0; }
+}
+
+/* Scroll indicator */
+.scroll-ind {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(248, 246, 241, 0.5);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  z-index: 2;
+  animation: bounce 2s ease-in-out infinite;
+}
+@keyframes bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, -8px); }
+}
+
+/* ============ SECTIONS ============ */
+section { padding: 6rem var(--pad); position: relative; }
+.container { max-width: var(--max); margin: 0 auto; }
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ocre-deep);
+  margin-bottom: 1.25rem;
+  font-weight: 600;
+}
+.section-eyebrow::before {
+  content: '';
+  width: 32px;
+  height: 1px;
+  background: var(--ocre);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--navy);
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+.section-title em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--olive);
+}
+.section-intro {
+  font-size: 1.1rem;
+  color: var(--muted);
+  max-width: 680px;
+  margin-bottom: 4rem;
+}
+
+/* ============ CONTEXTE ============ */
+.context {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.context::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(212, 146, 42, 0.08), transparent 70%);
+  pointer-events: none;
+}
+
+.context-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+@media (max-width: 900px) { .context-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+.context-text p {
+  font-size: 1.05rem;
+  color: var(--navy);
+  margin-bottom: 1.25rem;
+  line-height: 1.75;
+}
+.context-text p:first-of-type::first-letter {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  font-weight: 600;
+  float: left;
+  line-height: 0.85;
+  margin: 0.3rem 0.6rem 0 0;
+  color: var(--ocre);
+}
+
+.context-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+.stat-card {
+  background: var(--paper);
+  padding: 2rem 1.5rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--olive);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:nth-child(2) { border-left-color: var(--ocre); }
+.stat-card:nth-child(3) { border-left-color: var(--navy); }
+.stat-card:nth-child(4) { border-left-color: var(--olive); }
+.stat-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(27, 46, 75, 0.08);
+}
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.stat-lbl {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.5rem;
+  letter-spacing: 0.02em;
+}
+
+/* ============ OBJECTIFS ============ */
+.objectives {
+  background: var(--paper);
+}
+.obj-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+}
+.obj-card {
+  background: var(--cream);
+  padding: 2.5rem 2rem;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  border: 1px solid transparent;
+}
+.obj-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 4px;
+  background: var(--accent, var(--ocre));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.obj-card:hover {
+  background: var(--paper);
+  border-color: rgba(27, 46, 75, 0.08);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(27, 46, 75, 0.08);
+}
+.obj-card:hover::before { transform: scaleX(1); }
+
+.obj-num {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1rem;
+  color: var(--accent, var(--ocre));
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.05em;
+}
+.obj-icon {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 1.25rem;
+  color: var(--accent, var(--ocre));
+}
+.obj-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+.obj-card p {
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* ============ THEMATIQUES ============ */
+.themes {
+  background: var(--navy);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.themes::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 90% 10%, rgba(212, 146, 42, 0.12), transparent 50%),
+    radial-gradient(circle at 10% 90%, rgba(122, 139, 63, 0.15), transparent 50%);
+  pointer-events: none;
+}
+.themes .section-title { color: var(--cream); }
+.themes .section-title em { color: var(--ocre-light); }
+.themes .section-intro { color: rgba(248, 246, 241, 0.7); }
+.themes .section-eyebrow { color: var(--ocre-light); }
+.themes .section-eyebrow::before { background: var(--ocre-light); }
+
+.themes-list {
+  position: relative;
+  z-index: 1;
+}
+.theme-item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 0;
+  border-bottom: 1px solid rgba(248, 246, 241, 0.12);
+  transition: padding 0.3s ease;
+  cursor: pointer;
+}
+.theme-item:hover {
+  padding-left: 1rem;
+}
+.theme-item:hover .theme-num { color: var(--ocre-light); }
+.theme-item:hover .theme-title { color: var(--ocre-light); }
+.theme-item:hover .theme-arrow { transform: translateX(8px); color: var(--ocre-light); }
+
+.theme-num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--olive-light);
+  transition: color 0.3s ease;
+}
+.theme-title {
+  font-family: var(--font-display);
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  transition: color 0.3s ease;
+}
+.theme-desc {
+  font-size: 0.92rem;
+  color: rgba(248, 246, 241, 0.6);
+  margin-top: 0.4rem;
+}
+.theme-arrow {
+  font-size: 1.5rem;
+  color: rgba(248, 246, 241, 0.4);
+  transition: all 0.3s ease;
+}
+
+@media (max-width: 700px) {
+  .theme-item {
+    grid-template-columns: 50px 1fr;
+    gap: 1rem;
+  }
+  .theme-arrow { display: none; }
+  .theme-num { font-size: 1.5rem; }
+}
+
+/* ============ PROGRAMME ============ */
+.program {
+  background: var(--cream-warm);
+  position: relative;
+}
+.program-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  border-bottom: 1px solid rgba(27, 46, 75, 0.15);
+}
+.tab-btn {
+  background: none;
+  border: none;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--muted);
+  padding: 1rem 0;
+  cursor: pointer;
+  position: relative;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.tab-btn::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 0;
+  height: 2px;
+  background: var(--ocre);
+  transition: width 0.3s ease;
+}
+.tab-btn.active {
+  color: var(--navy);
+}
+.tab-btn.active::after { width: 100%; }
+.tab-btn em {
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--ocre-deep);
+  margin-left: 0.5rem;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+.tab-content.active { display: block; }
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.timeline-row {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 2rem;
+  padding: 1.5rem;
+  background: var(--paper);
+  border-radius: 4px;
+  border-left: 3px solid var(--olive);
+  transition: all 0.3s ease;
+}
+.timeline-row:hover {
+  border-left-color: var(--ocre);
+  transform: translateX(4px);
+  box-shadow: 0 8px 25px rgba(27, 46, 75, 0.06);
+}
+.timeline-row.keynote {
+  border-left-color: var(--ocre);
+  background: linear-gradient(135deg, var(--paper), var(--cream));
+}
+.timeline-row.break {
+  border-left-color: rgba(122, 139, 63, 0.4);
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+}
+.timeline-row.break .t-title { color: var(--muted); font-style: italic; font-weight: 400; }
+
+.t-time {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--navy);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.t-title {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  color: var(--navy);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+  line-height: 1.3;
+}
+.t-desc {
+  font-size: 0.92rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+}
+.t-speaker {
+  font-size: 0.85rem;
+  color: var(--ocre-deep);
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+.t-tag {
+  display: inline-block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.65rem;
+  background: var(--ocre);
+  color: var(--navy-deep);
+  border-radius: 999px;
+  margin-left: 0.5rem;
+  font-weight: 600;
+}
+
+@media (max-width: 600px) {
+  .timeline-row { grid-template-columns: 1fr; gap: 0.5rem; }
+}
+
+/* ============ INTERVENANTS ============ */
+.speakers { background: var(--paper); }
+.speakers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+.speaker-card {
+  background: var(--cream);
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  cursor: pointer;
+  position: relative;
+}
+.speaker-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(27, 46, 75, 0.12);
+}
+.speaker-img {
+  aspect-ratio: 3/4;
+  background: linear-gradient(135deg, var(--olive), var(--navy));
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+.speaker-card:nth-child(3n) .speaker-img { background: linear-gradient(135deg, var(--ocre), var(--navy-light)); }
+.speaker-card:nth-child(3n+1) .speaker-img { background: linear-gradient(135deg, var(--navy), var(--olive)); }
+.speaker-card:nth-child(3n+2) .speaker-img { background: linear-gradient(135deg, var(--olive-deep), var(--ocre-deep)); }
+.speaker-img::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+.speaker-flag {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--cream);
+  color: var(--navy);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  font-weight: 600;
+  z-index: 2;
+}
+.speaker-info {
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+.speaker-name {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.01em;
+}
+.speaker-role {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ============ INSCRIPTION / CTA ============ */
+.register {
+  background: linear-gradient(135deg, var(--olive-deep) 0%, var(--olive) 50%, var(--olive-deep) 100%);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.register::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 50%, rgba(212, 146, 42, 0.25), transparent 50%),
+    radial-gradient(circle at 20% 50%, rgba(27, 46, 75, 0.2), transparent 50%);
+  pointer-events: none;
+}
+.register-inner {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+}
+.register .section-eyebrow { color: var(--ocre-light); justify-content: center; }
+.register .section-eyebrow::before { background: var(--ocre-light); }
+.register .section-title {
+  color: var(--cream);
+  text-align: center;
+  max-width: none;
+}
+.register .section-title em { color: var(--ocre-light); }
+.register p {
+  font-size: 1.1rem;
+  color: rgba(248, 246, 241, 0.9);
+  margin-bottom: 2.5rem;
+}
+.register .btn-primary {
+  background: var(--cream);
+  color: var(--navy-deep);
+}
+.register .btn-primary:hover {
+  background: var(--ocre);
+  color: var(--navy-deep);
+}
+
+/* ============ PARTENAIRES ============ */
+.partners {
+  background: var(--paper);
+  padding: 4rem var(--pad);
+}
+.partners-title {
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 2.5rem;
+  font-weight: 500;
+}
+.partners-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  flex-wrap: wrap;
+}
+.partner-logo {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--navy);
+  opacity: 0.4;
+  transition: opacity 0.3s;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(27,46,75,0.15);
+  border-radius: 4px;
+}
+.partner-logo:hover { opacity: 1; }
+
+/* ============ FOOTER ============ */
+footer {
+  background: var(--navy-deep);
+  color: rgba(248, 246, 241, 0.7);
+  padding: 4rem var(--pad) 2rem;
+}
+.footer-grid {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+@media (max-width: 800px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 500px) { .footer-grid { grid-template-columns: 1fr; } }
+
+.footer-brand img { height: 56px; margin-bottom: 1rem; filter: brightness(0) invert(1) opacity(0.9); }
+.footer-brand p { font-size: 0.9rem; line-height: 1.6; max-width: 320px; }
+
+.footer-col h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+.footer-col ul { list-style: none; }
+.footer-col li { margin-bottom: 0.6rem; }
+.footer-col a {
+  color: rgba(248, 246, 241, 0.65);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color 0.2s;
+}
+.footer-col a:hover { color: var(--ocre-light); }
+
+.footer-bottom {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(248, 246, 241, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.82rem;
+  color: rgba(248, 246, 241, 0.5);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+/* ============ REVEAL ANIMATION ============ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAVIGATION ============ -->
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">
+      <img src="Logo_UA.png" alt="Université d'Automne">
+      <div class="nav-logo-text">
+        Université d'Automne
+        <small>Saint-Étienne · 2026</small>
+      </div>
+    </a>
+    <nav>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#contexte">Le projet</a></li>
+        <li><a href="#thematiques">Thématiques</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#intervenants">Intervenants</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#inscription" class="nav-cta">S'inscrire</a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow">Édition inaugurale · Saint-Étienne</div>
+      <h1>
+        L'Afrique et la France<br>
+        <em>en dialogue</em><br>
+        <span class="accent">repenser nos liens.</span>
+      </h1>
+      <p class="hero-sub">
+        Deux jours d'échanges intellectuels et diplomatiques entre experts africains
+        et français de renommée internationale, pour façonner les relations de demain.
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item">
+          <div class="label">Dates</div>
+          <div class="value">30 — 31 oct. 2026</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Lieu</div>
+          <div class="value">Saint-Étienne, France</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Format</div>
+          <div class="value">Présentiel & live</div>
+        </div>
+      </div>
+      <div class="hero-cta">
+        <a href="#inscription" class="btn btn-primary">
+          Réserver ma place
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#programme" class="btn btn-ghost">Découvrir le programme</a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="hero-card hero-card-main">
+        <div>
+          <div class="city">30 & 31 octobre</div>
+        </div>
+        <div class="date-big">
+          2026
+          <em>Édition I</em>
+        </div>
+      </div>
+      <div class="hero-card hero-card-accent">
+        <div class="num">2 jours</div>
+        <div class="lbl">de débats · 20+ experts</div>
+      </div>
+    </div>
+  </div>
+  <div class="scroll-ind">Faire défiler ↓</div>
+</section>
+
+<!-- ============ CONTEXTE ============ -->
+<section class="context" id="contexte">
+  <div class="container">
+    <div class="context-grid">
+      <div>
+        <div class="section-eyebrow reveal">Le projet</div>
+        <h2 class="section-title reveal">
+          Un événement <em>culturel, intellectuel</em> et diplomatique au cœur de Saint-Étienne.
+        </h2>
+        <div class="context-text reveal">
+          <p>
+            L'Université d'Automne rassemble pendant deux journées des experts africains
+            et français de renommée internationale autour des grandes thématiques
+            géopolitiques qui façonnent les relations entre l'Afrique et le monde.
+          </p>
+          <p>
+            Pensée comme un espace de dialogue exigeant et accessible, elle ambitionne
+            de stimuler le débat intellectuel sur les enjeux majeurs des sociétés
+            africaines et françaises — économie, culture, climat, jeunesse, souveraineté.
+          </p>
+          <p>
+            À Saint-Étienne, terre d'industrie et de migrations, l'événement veut tisser
+            des ponts concrets entre les Stéphanois d'origine et ceux issus des diasporas
+            africaines, et renforcer ainsi la cohésion d'une ville qui regarde le monde.
+          </p>
+        </div>
+      </div>
+
+      <div class="context-stats reveal">
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-lbl">jours de programmation intensive</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">20+</div>
+          <div class="stat-lbl">intervenants franco-africains</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">5</div>
+          <div class="stat-lbl">grandes thématiques abordées</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1000</div>
+          <div class="stat-lbl">participants attendus sur place</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ OBJECTIFS ============ -->
+<section class="objectives" id="objectifs">
+  <div class="container">
+    <div class="section-eyebrow reveal">Nos ambitions</div>
+    <h2 class="section-title reveal">Quatre objectifs <em>structurants</em>.</h2>
+    <p class="section-intro reveal">
+      Plus qu'un colloque, un acte de diplomatie locale tourné vers le monde —
+      pour donner à Saint-Étienne une voix dans le dialogue Afrique-France.
+    </p>
+
+    <div class="obj-grid">
+      <div class="obj-card reveal" style="--accent: var(--ocre);">
+        <div class="obj-num">— 01</div>
+        <svg class="obj-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="24" cy="24" r="20"/><path d="M4 24h40M24 4c5 5.6 8 13.4 8 20s-3 14.4-8 20c-5-5.6-8-13.4-8-20s3-14.4 8-20z"/>
+        </svg>
+        <h3>Rayonnement international</h3>
+        <p>Donner à Saint-Étienne une visibilité mondiale en accueillant des experts reconnus de l'espace franco-africain.</p>
+      </div>
+
+      <div class="obj-card reveal" style="--accent: var(--olive);">
+        <div class="obj-num">— 02</div>
+        <svg class="obj-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 12a8 8 0 1 1 16 0c0 4-3 6-4 8H20c-1-2-4-4-4-8z"/><path d="M18 28h12M19 32h10M20 36h8"/>
+        </svg>
+        <h3>Coopérations concrètes</h3>
+        <p>Identifier des axes de coopération opérationnels entre l'Afrique et la France, en particulier avec le territoire stéphanois.</p>
+      </div>
+
+      <div class="obj-card reveal" style="--accent: var(--navy);">
+        <div class="obj-num">— 03</div>
+        <svg class="obj-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="16" cy="18" r="5"/><circle cx="32" cy="18" r="5"/><path d="M8 38c0-5 4-9 8-9s8 4 8 9M24 38c0-5 4-9 8-9s8 4 8 9"/>
+        </svg>
+        <h3>Cohésion sociale</h3>
+        <p>Créer des ponts durables entre les Stéphanois d'origine et ceux issus des diasporas africaines.</p>
+      </div>
+
+      <div class="obj-card reveal" style="--accent: var(--ocre);">
+        <div class="obj-num">— 04</div>
+        <svg class="obj-icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M24 6v36M6 24h36M10 10l28 28M38 10L10 38"/>
+        </svg>
+        <h3>Débat intellectuel</h3>
+        <p>Stimuler la réflexion sur les sujets d'actualité majeurs pour les sociétés africaines et françaises.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THEMATIQUES ============ -->
+<section class="themes" id="thematiques">
+  <div class="container">
+    <div class="section-eyebrow reveal">Les grands axes</div>
+    <h2 class="section-title reveal">Cinq <em>thématiques</em> pour penser le monde de demain.</h2>
+    <p class="section-intro reveal">
+      Des sessions de débat menées par des spécialistes reconnus, autour des
+      enjeux qui structureront la décennie à venir.
+    </p>
+
+    <div class="themes-list">
+      <div class="theme-item reveal">
+        <div class="theme-num">01</div>
+        <div>
+          <div class="theme-title">Géopolitique et souveraineté africaine</div>
+          <div class="theme-desc">Recompositions des alliances, nouvelles routes diplomatiques, place de l'Afrique dans le monde multipolaire.</div>
+        </div>
+        <div class="theme-arrow">→</div>
+      </div>
+
+      <div class="theme-item reveal">
+        <div class="theme-num">02</div>
+        <div>
+          <div class="theme-title">Économie, investissement & développement</div>
+          <div class="theme-desc">Filières d'avenir, industries créatives, financement de la transition et coopérations économiques.</div>
+        </div>
+        <div class="theme-arrow">→</div>
+      </div>
+
+      <div class="theme-item reveal">
+        <div class="theme-num">03</div>
+        <div>
+          <div class="theme-title">Diasporas, mobilités & cohésion sociale</div>
+          <div class="theme-desc">Le rôle des diasporas africaines en France, mémoire partagée et fabrique du commun.</div>
+        </div>
+        <div class="theme-arrow">→</div>
+      </div>
+
+      <div class="theme-item reveal">
+        <div class="theme-num">04</div>
+        <div>
+          <div class="theme-title">Culture, jeunesse & récit africain</div>
+          <div class="theme-desc">Industries culturelles, panafricanisme contemporain, voix d'une nouvelle génération.</div>
+        </div>
+        <div class="theme-arrow">→</div>
+      </div>
+
+      <div class="theme-item reveal">
+        <div class="theme-num">05</div>
+        <div>
+          <div class="theme-title">Climat, énergie & transitions</div>
+          <div class="theme-desc">Adaptation, ressources critiques et justice climatique au cœur du dialogue Nord-Sud.</div>
+        </div>
+        <div class="theme-arrow">→</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAMME ============ -->
+<section class="program" id="programme">
+  <div class="container">
+    <div class="section-eyebrow reveal">Programme prévisionnel</div>
+    <h2 class="section-title reveal">Deux journées, <em>une dynamique</em>.</h2>
+    <p class="section-intro reveal">
+      Conférences plénières, débats croisés, ateliers thématiques et temps informels —
+      pensés pour favoriser la rencontre.
+    </p>
+
+    <div class="program-tabs reveal">
+      <button class="tab-btn active" data-tab="day1">
+        Vendredi 30 oct. <em>— Jour 01</em>
+      </button>
+      <button class="tab-btn" data-tab="day2">
+        Samedi 31 oct. <em>— Jour 02</em>
+      </button>
+    </div>
+
+    <div class="tab-content active" id="day1">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="t-time">08h30</div>
+          <div>
+            <div class="t-title">Accueil et café d'ouverture</div>
+            <div class="t-desc">Hall d'honneur · Remise des badges et café d'accueil</div>
+          </div>
+        </div>
+        <div class="timeline-row keynote">
+          <div class="t-time">09h30</div>
+          <div>
+            <div class="t-title">Cérémonie d'ouverture <span class="t-tag">Plénière</span></div>
+            <div class="t-desc">Discours d'ouverture par la Ville de Saint-Étienne et les autorités diplomatiques.</div>
+            <div class="t-speaker">Maire de Saint-Étienne · Ambassadeurs invités</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="t-time">10h30</div>
+          <div>
+            <div class="t-title">Keynote · Géopolitique africaine en 2026</div>
+            <div class="t-desc">Cartographie des nouveaux rapports de force et place de l'Afrique dans le monde multipolaire.</div>
+            <div class="t-speaker">Intervenant à confirmer</div>
+          </div>
+        </div>
+        <div class="timeline-row break">
+          <div class="t-time">12h00</div>
+          <div><div class="t-title">Déjeuner & networking</div></div>
+        </div>
+        <div class="timeline-row">
+          <div class="t-time">14h00</div>
+          <div>
+            <div class="t-title">Table ronde · Économie & investissement</div>
+            <div class="t-desc">Filières d'avenir, financement de la transition et coopérations économiques franco-africaines.</div>
+            <div class="t-speaker">3 experts · modérée par un journaliste de référence</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="t-time">16h00</div>
+          <div>
+            <div class="t-title">Atelier · Diasporas et cohésion sociale</div>
+            <div class="t-desc">Le rôle des diasporas africaines à Saint-Étienne et dans la région.</div>
+          </div>
+        </div>
+        <div class="timeline-row keynote">
+          <div class="t-time">19h00</div>
+          <div>
+            <div class="t-title">Soirée culturelle <span class="t-tag">Public</span></div>
+            <div class="t-desc">Concert, projection et cocktail dînatoire en présence des intervenants.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="day2">
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="t-time">09h00</div>
+          <div>
+            <div class="t-title">Keynote · Culture, jeunesse et récit africain</div>
+            <div class="t-desc">Industries culturelles, panafricanisme contemporain et voix d'une nouvelle génération.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="t-time">10h30</div>
+          <div>
+            <div class="t-title">Table ronde · Climat & transitions</div>
+            <div class="t-desc">Adaptation, ressources critiques et justice climatique au cœur du dialogue Nord-Sud.</div>
+            <div class="t-speaker">4 experts · regard croisé Afrique–France</div>
+          </div>
+        </div>
+        <div class="timeline-row break">
+          <div class="t-time">12h30</div>
+          <div><div class="t-title">Déjeuner & networking</div></div>
+        </div>
+        <div class="timeline-row">
+          <div class="t-time">14h00</div>
+          <div>
+            <div class="t-title">Atelier · Coopérations Saint-Étienne / Afrique</div>
+            <div class="t-desc">Identifier des axes opérationnels : universités, industries, sport, culture.</div>
+          </div>
+        </div>
+        <div class="timeline-row keynote">
+          <div class="t-time">16h30</div>
+          <div>
+            <div class="t-title">Plénière de clôture <span class="t-tag">Plénière</span></div>
+            <div class="t-desc">Synthèse, restitution des ateliers et annonce des engagements pour 2027.</div>
+          </div>
+        </div>
+        <div class="timeline-row">
+          <div class="t-time">18h00</div>
+          <div>
+            <div class="t-title">Cocktail de clôture</div>
+            <div class="t-desc">Moment convivial pour prolonger les échanges entre intervenants et participants.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INTERVENANTS ============ -->
+<section class="speakers" id="intervenants">
+  <div class="container">
+    <div class="section-eyebrow reveal">Les voix de l'édition</div>
+    <h2 class="section-title reveal">Des intervenants <em>de référence</em>.</h2>
+    <p class="section-intro reveal">
+      Universitaires, diplomates, entrepreneurs, artistes et journalistes — 
+      les experts qui façonnent le dialogue Afrique-France.
+    </p>
+
+    <div class="speakers-grid">
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">À confirmer</div>
+          AD
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Achille D.</div>
+          <div class="speaker-role">Politologue · Penseur des relations Afrique-Monde</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">À confirmer</div>
+          FS
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Felwine S.</div>
+          <div class="speaker-role">Économiste · Université Cheikh Anta Diop</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">Confirmé</div>
+          LD
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Léonora M.</div>
+          <div class="speaker-role">Journaliste · Spécialiste géopolitique africaine</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">À confirmer</div>
+          KM
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Kako N.</div>
+          <div class="speaker-role">Économiste · Ancien ministre togolais</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">Confirmé</div>
+          AS
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Aminata T.</div>
+          <div class="speaker-role">Entrepreneure · Écosystèmes innovation</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">Confirmé</div>
+          JT
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Jean-Marc T.</div>
+          <div class="speaker-role">Universitaire · Sciences Po Lyon</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">À confirmer</div>
+          CC
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Carlos L.</div>
+          <div class="speaker-role">Climatologue · IPCC Africa Working Group</div>
+        </div>
+      </div>
+
+      <div class="speaker-card reveal">
+        <div class="speaker-img">
+          <div class="speaker-flag">Confirmé</div>
+          MM
+        </div>
+        <div class="speaker-info">
+          <div class="speaker-name">Marie-Antoinette B.</div>
+          <div class="speaker-role">Diplomate · Conseillère diasporas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INSCRIPTION ============ -->
+<section class="register" id="inscription">
+  <div class="container">
+    <div class="register-inner reveal">
+      <div class="section-eyebrow">Inscription</div>
+      <h2 class="section-title">Rejoignez la conversation <em>Afrique-France</em>.</h2>
+      <p>
+        Les inscriptions ouvriront en juin 2026. Pré-inscrivez-vous dès maintenant
+        pour recevoir le programme détaillé et bénéficier d'un accès prioritaire.
+      </p>
+      <div class="hero-cta" style="justify-content: center;">
+        <a href="#contact" class="btn btn-primary">
+          Se pré-inscrire
+          <span aria-hidden="true">→</span>
+        </a>
+        <a href="#" class="btn btn-ghost">Télécharger le dossier (PDF)</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PARTENAIRES ============ -->
+<section class="partners">
+  <div class="container">
+    <div class="partners-title">Avec le soutien de</div>
+    <div class="partners-grid">
+      <div class="partner-logo">Ville de Saint-Étienne</div>
+      <div class="partner-logo">Région AURA</div>
+      <div class="partner-logo">Université Jean Monnet</div>
+      <div class="partner-logo">Sciences Po Lyon</div>
+      <div class="partner-logo">Institut français</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <img src="Logo_UA.png" alt="Université d'Automne">
+      <p>
+        Événement culturel, intellectuel et diplomatique réunissant
+        experts africains et français à Saint-Étienne les 30 et 31 octobre 2026.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="#contexte">Le projet</a></li>
+        <li><a href="#thematiques">Thématiques</a></li>
+        <li><a href="#programme">Programme</a></li>
+        <li><a href="#intervenants">Intervenants</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Ressources</h4>
+      <ul>
+        <li><a href="#">Dossier de presse</a></li>
+        <li><a href="#">Brochure 2026</a></li>
+        <li><a href="#">Espace partenaires</a></li>
+        <li><a href="#">Mentions légales</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:contact@universite-automne.fr">contact@universite-automne.fr</a></li>
+        <li><a href="tel:+33477000000">+33 4 77 00 00 00</a></li>
+        <li><a href="#">Saint-Étienne, France</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 Université d'Automne · Saint-Étienne. Tous droits réservés.</div>
+    <div>Réfléchir · Développer · Agir</div>
+  </div>
+</footer>
+
+<script>
+// Menu mobile
+const burger = document.getElementById('burger');
+const navLinks = document.getElementById('navLinks');
+burger?.addEventListener('click', () => navLinks.classList.toggle('open'));
+
+// Tabs programme
+document.querySelectorAll('.tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(btn.dataset.tab).classList.add('active');
+  });
+});
+
+// Reveal on scroll
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      io.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+// Nav scroll effect
+const nav = document.querySelector('header.nav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) {
+    nav.style.boxShadow = '0 4px 20px rgba(27, 46, 75, 0.06)';
+  } else {
+    nav.style.boxShadow = 'none';
+  }
+});
+</script>
+
+</body>
+</html>
