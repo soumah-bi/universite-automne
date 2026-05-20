@@ -50,55 +50,70 @@ header.nav {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(251, 250, 246, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(27, 46, 75, 0.08);
+  background: rgba(15, 30, 51, 0.85);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(248, 246, 241, 0.08);
   transition: all 0.3s ease;
 }
+header.nav.scrolled {
+  background: rgba(251, 250, 246, 0.95);
+  border-bottom-color: rgba(27, 46, 75, 0.08);
+}
+header.nav.scrolled .nav-logo-text { color: var(--navy); }
+header.nav.scrolled .nav-logo-text small { color: var(--ocre-deep); }
+header.nav.scrolled .nav-links a { color: var(--navy); }
+header.nav.scrolled .lang-switch { color: var(--navy); }
+header.nav.scrolled .lang-switch .active { color: var(--ocre-deep); }
+header.nav.scrolled .burger span { background: var(--navy); }
+
 .nav-inner {
   max-width: var(--max);
   margin: 0 auto;
-  padding: 0.9rem var(--pad);
+  padding: 0.85rem var(--pad);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 1.5rem;
 }
 .nav-logo {
   display: flex;
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
-  color: var(--navy);
 }
-.nav-logo img { height: 44px; width: auto; }
+.nav-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
+header.nav.scrolled .nav-logo img { filter: none; }
+
 .nav-logo-text {
   font-family: var(--font-display);
   font-weight: 600;
   font-size: 1rem;
   line-height: 1.1;
   letter-spacing: -0.01em;
+  color: var(--cream);
+  transition: color 0.3s;
 }
 .nav-logo-text small {
   display: block;
   font-family: var(--font-body);
   font-size: 0.7rem;
   font-weight: 400;
-  color: var(--ocre-deep);
+  color: var(--ocre-light);
   letter-spacing: 0.12em;
   text-transform: uppercase;
   margin-top: 2px;
+  transition: color 0.3s;
 }
 .nav-links {
   display: flex;
-  gap: 2rem;
+  gap: 1.75rem;
   list-style: none;
 }
 .nav-links a {
   text-decoration: none;
-  color: var(--navy);
-  font-size: 0.92rem;
+  color: var(--cream);
+  font-size: 0.88rem;
   font-weight: 500;
   position: relative;
   padding: 0.25rem 0;
@@ -113,87 +128,181 @@ header.nav {
   background: var(--ocre);
   transition: width 0.3s ease;
 }
-.nav-links a:hover { color: var(--ocre-deep); }
+.nav-links a:hover { color: var(--ocre-light); }
 .nav-links a:hover::after { width: 100%; }
 
-.nav-cta {
-  background: var(--navy);
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.lang-switch {
+  font-size: 0.82rem;
+  font-weight: 500;
   color: var(--cream);
-  padding: 0.65rem 1.4rem;
+  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: color 0.3s;
+}
+.lang-switch button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.2rem;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+.lang-switch button.active {
+  opacity: 1;
+  color: var(--ocre-light);
+}
+.lang-switch button:hover { opacity: 1; }
+.lang-switch span { opacity: 0.4; }
+
+.nav-cta {
+  background: linear-gradient(135deg, var(--ocre), var(--ocre-deep));
+  color: var(--cream);
+  padding: 0.7rem 1.5rem;
   border-radius: 999px;
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 500;
+  font-size: 0.88rem;
+  font-weight: 600;
   transition: all 0.25s ease;
   white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(212, 146, 42, 0.3);
+  letter-spacing: 0.01em;
 }
 .nav-cta:hover {
-  background: var(--ocre);
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(212, 146, 42, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 146, 42, 0.45);
 }
 
 .burger { display: none; background: none; border: none; cursor: pointer; padding: 0.5rem; }
-.burger span { display: block; width: 24px; height: 2px; background: var(--navy); margin: 5px 0; transition: 0.3s; }
+.burger span { display: block; width: 24px; height: 2px; background: var(--cream); margin: 5px 0; transition: 0.3s; }
 
+@media (max-width: 1024px) {
+  .nav-links { gap: 1.25rem; }
+  .nav-links a { font-size: 0.82rem; }
+}
 @media (max-width: 900px) {
-  .nav-links, .nav-cta { display: none; }
-  .burger { display: block; }
+  .nav-links { display: none; }
   .nav-links.open {
     display: flex;
     position: absolute;
     top: 100%; left: 0; right: 0;
-    background: var(--cream);
+    background: var(--navy-deep);
     flex-direction: column;
     padding: 1.5rem var(--pad);
-    border-bottom: 1px solid rgba(27,46,75,0.1);
   }
+  .burger { display: block; }
+}
+@media (max-width: 600px) {
+  .nav-cta { padding: 0.55rem 1rem; font-size: 0.8rem; }
+  .lang-switch { font-size: 0.75rem; }
 }
 
-/* ============ HERO ============ */
+/* ============ HERO CARROUSEL ============ */
 .hero {
   min-height: 100vh;
   position: relative;
   background: var(--navy-deep);
   color: var(--cream);
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  padding: 8rem var(--pad) 4rem;
 }
-.hero::before {
-  content: '';
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+.slide.active { opacity: 1; z-index: 2; }
+
+.slide-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.slide-1 .slide-bg {
+  background-image: url('saint-etienne-hero.jpg');
+  animation: zoomSlow 20s ease-in-out infinite alternate;
+}
+.slide-2 .slide-bg {
+  background:
+    radial-gradient(ellipse at 20% 30%, rgba(122, 139, 63, 0.4), transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(212, 146, 42, 0.35), transparent 60%),
+    linear-gradient(135deg, var(--navy-deep), var(--navy));
+}
+.slide-3 .slide-bg {
+  background:
+    radial-gradient(ellipse at 70% 30%, rgba(212, 146, 42, 0.3), transparent 55%),
+    radial-gradient(ellipse at 20% 80%, rgba(122, 139, 63, 0.25), transparent 60%),
+    linear-gradient(160deg, var(--navy), var(--navy-deep));
+}
+
+@keyframes zoomSlow {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.slide-overlay {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 80% 20%, rgba(212, 146, 42, 0.18), transparent 50%),
-    radial-gradient(ellipse at 10% 80%, rgba(122, 139, 63, 0.22), transparent 55%),
-    linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 100%);
-  z-index: 0;
+    linear-gradient(180deg,
+      rgba(15, 30, 51, 0.65) 0%,
+      rgba(15, 30, 51, 0.4) 40%,
+      rgba(15, 30, 51, 0.75) 100%),
+    linear-gradient(90deg,
+      rgba(15, 30, 51, 0.6) 0%,
+      rgba(15, 30, 51, 0.1) 50%,
+      rgba(176, 116, 26, 0.15) 100%);
+  z-index: 1;
 }
-.hero::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
+.slide-2 .slide-overlay,
+.slide-3 .slide-overlay {
+  background:
     radial-gradient(circle at 1px 1px, rgba(248, 246, 241, 0.06) 1px, transparent 0);
   background-size: 32px 32px;
-  z-index: 0;
 }
 
-.hero-inner {
-  max-width: var(--max);
-  margin: 0 auto;
-  width: 100%;
+.slide-content {
   position: relative;
   z-index: 2;
-  display: grid;
-  grid-template-columns: 1.4fr 1fr;
-  gap: 4rem;
-  align-items: center;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 8rem var(--pad) 6rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
 }
-@media (max-width: 980px) {
-  .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+
+.slide.active .slide-content > * {
+  animation: heroFadeUp 1s ease forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.slide.active .slide-content > *:nth-child(1) { animation-delay: 0.1s; }
+.slide.active .slide-content > *:nth-child(2) { animation-delay: 0.25s; }
+.slide.active .slide-content > *:nth-child(3) { animation-delay: 0.4s; }
+.slide.active .slide-content > *:nth-child(4) { animation-delay: 0.55s; }
+.slide.active .slide-content > *:nth-child(5) { animation-delay: 0.7s; }
+
+@keyframes heroFadeUp {
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .hero-eyebrow {
@@ -204,10 +313,8 @@ header.nav {
   letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--ocre-light);
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.75rem;
   font-weight: 500;
-  opacity: 0;
-  animation: fadeUp 0.8s ease 0.1s forwards;
 }
 .hero-eyebrow::before {
   content: '';
@@ -218,56 +325,73 @@ header.nav {
 
 .hero h1 {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-size: clamp(2.5rem, 6.5vw, 5.5rem);
   font-weight: 500;
   line-height: 0.98;
   letter-spacing: -0.025em;
   margin-bottom: 1.5rem;
-  opacity: 0;
-  animation: fadeUp 0.9s ease 0.2s forwards;
+  max-width: 880px;
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
 }
 .hero h1 em {
   font-style: italic;
   font-weight: 400;
   color: var(--olive-light);
-  font-variation-settings: "SOFT" 100;
 }
 .hero h1 .accent {
   color: var(--ocre-light);
   font-style: italic;
 }
 
-.hero-sub {
-  font-size: clamp(1.05rem, 1.5vw, 1.2rem);
-  max-width: 540px;
-  color: rgba(248, 246, 241, 0.85);
-  margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.9s ease 0.35s forwards;
+.hero-date-big {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.25rem;
+  color: var(--cream);
+  text-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+}
+.hero-date-big .month {
+  display: block;
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.55em;
+  color: var(--ocre-light);
+  margin-top: 0.3rem;
 }
 
-.hero-meta {
+.hero-sub {
+  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
+  max-width: 620px;
+  color: rgba(248, 246, 241, 0.92);
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+.hero-stats {
   display: flex;
-  gap: 2.5rem;
+  gap: 3rem;
   flex-wrap: wrap;
   margin-bottom: 2.5rem;
-  opacity: 0;
-  animation: fadeUp 0.9s ease 0.45s forwards;
 }
-.meta-item {
-  border-left: 2px solid var(--ocre);
-  padding-left: 1rem;
-}
-.meta-item .label {
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--olive-light);
-  margin-bottom: 0.25rem;
-}
-.meta-item .value {
+.hero-stat .num {
   font-family: var(--font-display);
-  font-size: 1.15rem;
+  font-size: clamp(2.5rem, 4.5vw, 3.5rem);
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ocre-light);
+  letter-spacing: -0.03em;
+  text-shadow: 0 4px 25px rgba(0, 0, 0, 0.4);
+}
+.hero-stat .lbl {
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-top: 0.5rem;
   font-weight: 500;
 }
 
@@ -275,15 +399,13 @@ header.nav {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
-  opacity: 0;
-  animation: fadeUp 0.9s ease 0.55s forwards;
 }
 .btn {
-  padding: 0.95rem 1.8rem;
+  padding: 1rem 2rem;
   border-radius: 999px;
   text-decoration: none;
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
@@ -291,127 +413,120 @@ header.nav {
   border: none;
   cursor: pointer;
   font-family: inherit;
+  letter-spacing: 0.01em;
 }
 .btn-primary {
-  background: var(--ocre);
-  color: var(--navy-deep);
+  background: linear-gradient(135deg, var(--ocre), var(--ocre-deep));
+  color: var(--cream);
+  box-shadow: 0 8px 25px rgba(212, 146, 42, 0.35);
 }
 .btn-primary:hover {
-  background: var(--ocre-light);
   transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(212, 146, 42, 0.35);
+  box-shadow: 0 12px 35px rgba(212, 146, 42, 0.5);
 }
 .btn-ghost {
-  background: transparent;
+  background: rgba(248, 246, 241, 0.08);
   color: var(--cream);
   border: 1px solid rgba(248, 246, 241, 0.3);
+  backdrop-filter: blur(8px);
 }
 .btn-ghost:hover {
-  background: rgba(248, 246, 241, 0.08);
+  background: rgba(248, 246, 241, 0.15);
   border-color: var(--cream);
 }
 
-/* Hero visual side */
-.hero-visual {
-  position: relative;
-  aspect-ratio: 1 / 1;
-  opacity: 0;
-  animation: fadeIn 1.2s ease 0.6s forwards;
-}
-.hero-card {
+/* Hero meta info bottom */
+.hero-meta-bar {
   position: absolute;
-  background: rgba(248, 246, 241, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(248, 246, 241, 0.12);
-  border-radius: 8px;
-  padding: 1.5rem;
+  bottom: 4rem;
+  left: 0; right: 0;
+  z-index: 5;
+  padding: 0 var(--pad);
 }
-.hero-card-main {
-  inset: 10% 5% 30% 15%;
-  background: var(--cream);
-  color: var(--navy-deep);
-  border: none;
+.hero-meta-inner {
+  max-width: var(--max);
+  margin: 0 auto;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 30px 80px rgba(0,0,0,0.4);
-  transform: rotate(-2deg);
+  align-items: flex-end;
+  gap: 2rem;
+  flex-wrap: wrap;
 }
-.hero-card-main .date-big {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 7vw, 5rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.04em;
+.hero-meta-info {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
 }
-.hero-card-main .date-big em {
-  display: block;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--olive-deep);
-  font-size: 0.6em;
+.meta-block {
+  border-left: 2px solid var(--ocre);
+  padding-left: 1rem;
 }
-.hero-card-main .city {
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
+.meta-block .label {
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ocre-deep);
-  font-weight: 600;
+  color: var(--olive-light);
+  margin-bottom: 0.25rem;
+  font-weight: 500;
 }
-
-.hero-card-accent {
-  bottom: 8%;
-  right: 0;
-  width: 55%;
-  background: var(--olive);
+.meta-block .value {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 500;
   color: var(--cream);
+}
+
+/* Hero controls */
+.hero-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.dots {
+  display: flex;
+  gap: 0.6rem;
+}
+.dot {
+  width: 32px;
+  height: 3px;
+  background: rgba(248, 246, 241, 0.3);
   border: none;
-  transform: rotate(3deg);
-  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 0;
+  transition: all 0.3s;
 }
-.hero-card-accent .num {
-  font-family: var(--font-display);
-  font-size: 2.5rem;
-  font-weight: 600;
-  line-height: 1;
+.dot.active { background: var(--ocre); width: 48px; }
+.dot:hover { background: var(--ocre-light); }
+
+.arrow-btn {
+  background: rgba(248, 246, 241, 0.1);
+  border: 1px solid rgba(248, 246, 241, 0.25);
+  color: var(--cream);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.25s;
+  backdrop-filter: blur(8px);
 }
-.hero-card-accent .lbl {
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  margin-top: 0.5rem;
-  opacity: 0.9;
+.arrow-btn:hover {
+  background: var(--ocre);
+  border-color: var(--ocre);
+  transform: scale(1.08);
+}
+.arrow-btn svg { width: 18px; height: 18px; }
+
+@media (max-width: 700px) {
+  .hero-meta-bar { bottom: 2rem; }
+  .hero-meta-info { gap: 1.5rem; }
+  .hero-stats { gap: 1.5rem; }
 }
 
-@keyframes fadeUp {
-  to { opacity: 1; transform: translateY(0); }
-  from { opacity: 0; transform: translateY(20px); }
-}
-@keyframes fadeIn {
-  to { opacity: 1; }
-  from { opacity: 0; }
-}
-
-/* Scroll indicator */
-.scroll-ind {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  color: rgba(248, 246, 241, 0.5);
-  font-size: 0.72rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  z-index: 2;
-  animation: bounce 2s ease-in-out infinite;
-}
-@keyframes bounce {
-  0%, 100% { transform: translate(-50%, 0); }
-  50% { transform: translate(-50%, -8px); }
-}
-
-/* ============ SECTIONS ============ */
+/* ============ SECTIONS GENERAL ============ */
 section { padding: 6rem var(--pad); position: relative; }
 .container { max-width: var(--max); margin: 0 auto; }
 
@@ -528,13 +643,10 @@ section { padding: 6rem var(--pad); position: relative; }
   font-size: 0.85rem;
   color: var(--muted);
   margin-top: 0.5rem;
-  letter-spacing: 0.02em;
 }
 
 /* ============ OBJECTIFS ============ */
-.objectives {
-  background: var(--paper);
-}
+.objectives { background: var(--paper); }
 .obj-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -619,10 +731,7 @@ section { padding: 6rem var(--pad); position: relative; }
 .themes .section-eyebrow { color: var(--ocre-light); }
 .themes .section-eyebrow::before { background: var(--ocre-light); }
 
-.themes-list {
-  position: relative;
-  z-index: 1;
-}
+.themes-list { position: relative; z-index: 1; }
 .theme-item {
   display: grid;
   grid-template-columns: 80px 1fr auto;
@@ -633,9 +742,7 @@ section { padding: 6rem var(--pad); position: relative; }
   transition: padding 0.3s ease;
   cursor: pointer;
 }
-.theme-item:hover {
-  padding-left: 1rem;
-}
+.theme-item:hover { padding-left: 1rem; }
 .theme-item:hover .theme-num { color: var(--ocre-light); }
 .theme-item:hover .theme-title { color: var(--ocre-light); }
 .theme-item:hover .theme-arrow { transform: translateX(8px); color: var(--ocre-light); }
@@ -668,19 +775,13 @@ section { padding: 6rem var(--pad); position: relative; }
 }
 
 @media (max-width: 700px) {
-  .theme-item {
-    grid-template-columns: 50px 1fr;
-    gap: 1rem;
-  }
+  .theme-item { grid-template-columns: 50px 1fr; gap: 1rem; }
   .theme-arrow { display: none; }
   .theme-num { font-size: 1.5rem; }
 }
 
 /* ============ PROGRAMME ============ */
-.program {
-  background: var(--cream-warm);
-  position: relative;
-}
+.program { background: var(--cream-warm); position: relative; }
 .program-tabs {
   display: flex;
   gap: 1rem;
@@ -709,9 +810,7 @@ section { padding: 6rem var(--pad); position: relative; }
   background: var(--ocre);
   transition: width 0.3s ease;
 }
-.tab-btn.active {
-  color: var(--navy);
-}
+.tab-btn.active { color: var(--navy); }
 .tab-btn.active::after { width: 100%; }
 .tab-btn em {
   font-style: italic;
@@ -720,11 +819,9 @@ section { padding: 6rem var(--pad); position: relative; }
   margin-left: 0.5rem;
 }
 
-.tab-content {
-  display: none;
-  animation: fadeIn 0.5s ease;
-}
+.tab-content { display: none; animation: fadeIn 0.5s ease; }
 .tab-content.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
 .timeline {
   display: flex;
@@ -762,7 +859,6 @@ section { padding: 6rem var(--pad); position: relative; }
   font-size: 1.1rem;
   color: var(--navy);
   font-weight: 600;
-  letter-spacing: -0.01em;
 }
 .t-title {
   font-family: var(--font-display);
@@ -772,17 +868,8 @@ section { padding: 6rem var(--pad); position: relative; }
   margin-bottom: 0.25rem;
   line-height: 1.3;
 }
-.t-desc {
-  font-size: 0.92rem;
-  color: var(--muted);
-  margin-bottom: 0.5rem;
-}
-.t-speaker {
-  font-size: 0.85rem;
-  color: var(--ocre-deep);
-  letter-spacing: 0.03em;
-  font-weight: 500;
-}
+.t-desc { font-size: 0.92rem; color: var(--muted); margin-bottom: 0.5rem; }
+.t-speaker { font-size: 0.85rem; color: var(--ocre-deep); font-weight: 500; }
 .t-tag {
   display: inline-block;
   font-size: 0.7rem;
@@ -796,9 +883,7 @@ section { padding: 6rem var(--pad); position: relative; }
   font-weight: 600;
 }
 
-@media (max-width: 600px) {
-  .timeline-row { grid-template-columns: 1fr; gap: 0.5rem; }
-}
+@media (max-width: 600px) { .timeline-row { grid-template-columns: 1fr; gap: 0.5rem; } }
 
 /* ============ INTERVENANTS ============ */
 .speakers { background: var(--paper); }
@@ -815,13 +900,9 @@ section { padding: 6rem var(--pad); position: relative; }
   cursor: pointer;
   position: relative;
 }
-.speaker-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(27, 46, 75, 0.12);
-}
+.speaker-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(27, 46, 75, 0.12); }
 .speaker-img {
   aspect-ratio: 3/4;
-  background: linear-gradient(135deg, var(--olive), var(--navy));
   position: relative;
   overflow: hidden;
   display: flex;
@@ -857,24 +938,251 @@ section { padding: 6rem var(--pad); position: relative; }
   font-weight: 600;
   z-index: 2;
 }
-.speaker-info {
-  padding: 1.25rem 1.5rem 1.5rem;
-}
+.speaker-info { padding: 1.25rem 1.5rem 1.5rem; }
 .speaker-name {
   font-family: var(--font-display);
   font-size: 1.2rem;
   font-weight: 600;
   color: var(--navy);
   margin-bottom: 0.3rem;
-  letter-spacing: -0.01em;
 }
-.speaker-role {
-  font-size: 0.85rem;
-  color: var(--muted);
-  line-height: 1.4;
+.speaker-role { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+
+/* ============ PRESSE ============ */
+.press {
+  background: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+.press-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+@media (max-width: 900px) { .press-grid { grid-template-columns: 1fr; } }
+
+.press-visual {
+  position: relative;
+  aspect-ratio: 4/5;
+  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+  border-radius: 4px;
+  overflow: hidden;
+  padding: 3rem;
+  color: var(--cream);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.press-visual::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(212, 146, 42, 0.25), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(122, 139, 63, 0.2), transparent 50%);
+}
+.press-visual > * { position: relative; z-index: 1; }
+.press-visual-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ocre-light);
+  margin-bottom: 0.5rem;
+}
+.press-visual-num {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+.press-visual-num em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--olive-light);
+  display: block;
+  font-size: 0.5em;
+  margin-top: 0.3rem;
+}
+.press-visual-quote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.5;
+  color: rgba(248, 246, 241, 0.85);
+  border-left: 2px solid var(--ocre);
+  padding-left: 1.25rem;
 }
 
-/* ============ INSCRIPTION / CTA ============ */
+.press-content h2 { margin-bottom: 2rem; }
+.press-list {
+  list-style: none;
+  margin-bottom: 2rem;
+}
+.press-list li {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(27, 46, 75, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.press-list li:last-child { border-bottom: none; }
+.press-item-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--navy);
+  font-weight: 600;
+}
+.press-item-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+.press-download {
+  background: var(--ocre);
+  color: var(--navy-deep);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.press-download:hover { background: var(--ocre-light); transform: translateY(-1px); }
+
+.press-contact {
+  background: var(--paper);
+  padding: 1.5rem;
+  border-radius: 4px;
+  border-left: 3px solid var(--ocre);
+}
+.press-contact h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--navy);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+.press-contact p { font-size: 0.9rem; color: var(--muted); }
+.press-contact a { color: var(--ocre-deep); text-decoration: none; font-weight: 500; }
+.press-contact a:hover { text-decoration: underline; }
+
+/* ============ PAST EDITIONS ============ */
+.past {
+  background: var(--paper);
+  position: relative;
+}
+.past-empty {
+  background: var(--cream);
+  border-radius: 4px;
+  padding: 4rem 2rem;
+  text-align: center;
+  border: 2px dashed rgba(212, 146, 42, 0.3);
+}
+.past-empty-icon {
+  font-family: var(--font-display);
+  font-size: 4rem;
+  color: var(--ocre);
+  font-style: italic;
+  font-weight: 300;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+.past-empty h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--navy);
+  margin-bottom: 0.75rem;
+  font-weight: 500;
+}
+.past-empty p {
+  font-size: 1rem;
+  color: var(--muted);
+  max-width: 500px;
+  margin: 0 auto 1.5rem;
+}
+.past-empty .badge {
+  display: inline-block;
+  background: var(--olive);
+  color: var(--cream);
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* ============ FAQ ============ */
+.faq {
+  background: var(--cream-warm);
+}
+.faq-list {
+  max-width: 880px;
+  margin: 0 auto;
+}
+.faq-item {
+  background: var(--paper);
+  border-radius: 4px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  border-left: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+.faq-item.open {
+  border-left-color: var(--ocre);
+  box-shadow: 0 8px 25px rgba(27, 46, 75, 0.06);
+}
+.faq-question {
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 1.5rem 1.75rem;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--navy);
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  letter-spacing: -0.01em;
+  transition: color 0.2s;
+}
+.faq-question:hover { color: var(--ocre-deep); }
+.faq-icon {
+  font-size: 1.5rem;
+  color: var(--ocre);
+  transition: transform 0.3s ease;
+  font-weight: 300;
+  line-height: 1;
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 1.75rem;
+}
+.faq-item.open .faq-answer {
+  max-height: 400px;
+  padding: 0 1.75rem 1.5rem;
+}
+.faq-answer p {
+  color: var(--muted);
+  font-size: 0.98rem;
+  line-height: 1.65;
+}
+.faq-answer a { color: var(--ocre-deep); text-decoration: underline; }
+
+/* ============ INSCRIPTION ============ */
 .register {
   background: linear-gradient(135deg, var(--olive-deep) 0%, var(--olive) 50%, var(--olive-deep) 100%);
   color: var(--cream);
@@ -888,7 +1196,6 @@ section { padding: 6rem var(--pad); position: relative; }
   background:
     radial-gradient(circle at 80% 50%, rgba(212, 146, 42, 0.25), transparent 50%),
     radial-gradient(circle at 20% 50%, rgba(27, 46, 75, 0.2), transparent 50%);
-  pointer-events: none;
 }
 .register-inner {
   position: relative;
@@ -899,31 +1206,18 @@ section { padding: 6rem var(--pad); position: relative; }
 }
 .register .section-eyebrow { color: var(--ocre-light); justify-content: center; }
 .register .section-eyebrow::before { background: var(--ocre-light); }
-.register .section-title {
-  color: var(--cream);
-  text-align: center;
-  max-width: none;
-}
+.register .section-title { color: var(--cream); text-align: center; max-width: none; }
 .register .section-title em { color: var(--ocre-light); }
 .register p {
   font-size: 1.1rem;
   color: rgba(248, 246, 241, 0.9);
   margin-bottom: 2.5rem;
 }
-.register .btn-primary {
-  background: var(--cream);
-  color: var(--navy-deep);
-}
-.register .btn-primary:hover {
-  background: var(--ocre);
-  color: var(--navy-deep);
-}
+.register .btn-primary { background: var(--cream); color: var(--navy-deep); }
+.register .btn-primary:hover { background: var(--ocre); color: var(--navy-deep); }
 
 /* ============ PARTENAIRES ============ */
-.partners {
-  background: var(--paper);
-  padding: 4rem var(--pad);
-}
+.partners { background: var(--paper); padding: 4rem var(--pad); }
 .partners-title {
   text-align: center;
   font-family: var(--font-display);
@@ -948,7 +1242,6 @@ section { padding: 6rem var(--pad); position: relative; }
   opacity: 0.4;
   transition: opacity 0.3s;
   font-weight: 500;
-  letter-spacing: 0.02em;
   padding: 0.5rem 1rem;
   border: 1px solid rgba(27,46,75,0.15);
   border-radius: 4px;
@@ -956,11 +1249,7 @@ section { padding: 6rem var(--pad); position: relative; }
 .partner-logo:hover { opacity: 1; }
 
 /* ============ FOOTER ============ */
-footer {
-  background: var(--navy-deep);
-  color: rgba(248, 246, 241, 0.7);
-  padding: 4rem var(--pad) 2rem;
-}
+footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding: 4rem var(--pad) 2rem; }
 .footer-grid {
   max-width: var(--max);
   margin: 0 auto;
@@ -981,7 +1270,6 @@ footer {
   color: var(--cream);
   margin-bottom: 1rem;
   font-weight: 600;
-  letter-spacing: 0.02em;
 }
 .footer-col ul { list-style: none; }
 .footer-col li { margin-bottom: 0.6rem; }
@@ -1007,22 +1295,19 @@ footer {
   gap: 1rem;
 }
 
-/* ============ REVEAL ANIMATION ============ */
+/* ============ REVEAL ============ */
 .reveal {
   opacity: 0;
   transform: translateY(30px);
   transition: opacity 0.8s ease, transform 0.8s ease;
 }
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+.reveal.visible { opacity: 1; transform: translateY(0); }
 </style>
 </head>
 <body>
 
 <!-- ============ NAVIGATION ============ -->
-<header class="nav">
+<header class="nav" id="topNav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
       <img src="Logo_UA.png" alt="Université d'Automne">
@@ -1037,70 +1322,144 @@ footer {
         <li><a href="#thematiques">Thématiques</a></li>
         <li><a href="#programme">Programme</a></li>
         <li><a href="#intervenants">Intervenants</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#presse">Presse</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
-    <a href="#inscription" class="nav-cta">S'inscrire</a>
-    <button class="burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav-right">
+      <div class="lang-switch">
+        <button class="active">FR</button>
+        <span>|</span>
+        <button title="Version anglaise à venir">EN</button>
+      </div>
+      <a href="#inscription" class="nav-cta">S'inscrire ›</a>
+      <button class="burger" id="burger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </div>
 </header>
 
-<!-- ============ HERO ============ -->
+<!-- ============ HERO CARROUSEL ============ -->
 <section class="hero">
-  <div class="hero-inner">
-    <div>
-      <div class="hero-eyebrow">Édition inaugurale · Saint-Étienne</div>
-      <h1>
-        L'Afrique et la France<br>
-        <em>en dialogue</em><br>
-        <span class="accent">repenser nos liens.</span>
-      </h1>
-      <p class="hero-sub">
-        Deux jours d'échanges intellectuels et diplomatiques entre experts africains
-        et français de renommée internationale, pour façonner les relations de demain.
-      </p>
-      <div class="hero-meta">
-        <div class="meta-item">
+  <div class="hero-slides" id="heroSlides">
+
+    <!-- SLIDE 1 : L'événement -->
+    <div class="slide slide-1 active" data-slide="0">
+      <div class="slide-bg"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="hero-eyebrow">Édition inaugurale · Saint-Étienne</div>
+        <div class="hero-date-big">
+          30 & 31 octobre 2026
+          <span class="month">deux jours de dialogue Afrique-France</span>
+        </div>
+        <p class="hero-sub">
+          Un événement culturel, intellectuel et diplomatique au cœur de la
+          Cité du Design, accueillant experts africains et français de renommée internationale.
+        </p>
+        <div class="hero-cta">
+          <a href="#inscription" class="btn btn-primary">
+            Réserver ma place
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#programme" class="btn btn-ghost">Découvrir le programme</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 2 : L'ambition -->
+    <div class="slide slide-2" data-slide="1">
+      <div class="slide-bg"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="hero-eyebrow">Notre ambition</div>
+        <h1>
+          L'Afrique et la France<br>
+          <em>en dialogue</em><br>
+          <span class="accent">repenser nos liens.</span>
+        </h1>
+        <p class="hero-sub">
+          Cinq thématiques géopolitiques majeures, débattues par les voix
+          qui façonnent les relations Afrique-Monde de demain.
+        </p>
+        <div class="hero-cta">
+          <a href="#thematiques" class="btn btn-primary">
+            Les thématiques
+            <span aria-hidden="true">→</span>
+          </a>
+          <a href="#contexte" class="btn btn-ghost">Notre vision</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLIDE 3 : Les chiffres -->
+    <div class="slide slide-3" data-slide="2">
+      <div class="slide-bg"></div>
+      <div class="slide-overlay"></div>
+      <div class="slide-content">
+        <div class="hero-eyebrow">L'édition 2026 en chiffres</div>
+        <h1>
+          Une ambition <em>internationale</em><br>
+          ancrée à Saint-Étienne.
+        </h1>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="num">20+</div>
+            <div class="lbl">experts franco-africains</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">5</div>
+            <div class="lbl">grandes thématiques</div>
+          </div>
+          <div class="hero-stat">
+            <div class="num">1000</div>
+            <div class="lbl">participants attendus</div>
+          </div>
+        </div>
+        <div class="hero-cta">
+          <a href="#intervenants" class="btn btn-primary">
+            Voir les intervenants
+            <span aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Hero meta bar -->
+  <div class="hero-meta-bar">
+    <div class="hero-meta-inner">
+      <div class="hero-meta-info">
+        <div class="meta-block">
           <div class="label">Dates</div>
           <div class="value">30 — 31 oct. 2026</div>
         </div>
-        <div class="meta-item">
+        <div class="meta-block">
           <div class="label">Lieu</div>
-          <div class="value">Saint-Étienne, France</div>
+          <div class="value">Cité du Design, Saint-Étienne</div>
         </div>
-        <div class="meta-item">
+        <div class="meta-block">
           <div class="label">Format</div>
           <div class="value">Présentiel & live</div>
         </div>
       </div>
-      <div class="hero-cta">
-        <a href="#inscription" class="btn btn-primary">
-          Réserver ma place
-          <span aria-hidden="true">→</span>
-        </a>
-        <a href="#programme" class="btn btn-ghost">Découvrir le programme</a>
-      </div>
-    </div>
-
-    <div class="hero-visual">
-      <div class="hero-card hero-card-main">
-        <div>
-          <div class="city">30 & 31 octobre</div>
+      <div class="hero-controls">
+        <button class="arrow-btn" id="prevSlide" aria-label="Slide précédent">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="dots" id="dots">
+          <button class="dot active" data-go="0" aria-label="Slide 1"></button>
+          <button class="dot" data-go="1" aria-label="Slide 2"></button>
+          <button class="dot" data-go="2" aria-label="Slide 3"></button>
         </div>
-        <div class="date-big">
-          2026
-          <em>Édition I</em>
-        </div>
-      </div>
-      <div class="hero-card hero-card-accent">
-        <div class="num">2 jours</div>
-        <div class="lbl">de débats · 20+ experts</div>
+        <button class="arrow-btn" id="nextSlide" aria-label="Slide suivant">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
       </div>
     </div>
   </div>
-  <div class="scroll-ind">Faire défiler ↓</div>
 </section>
 
 <!-- ============ CONTEXTE ============ -->
@@ -1388,7 +1747,7 @@ footer {
     <div class="section-eyebrow reveal">Les voix de l'édition</div>
     <h2 class="section-title reveal">Des intervenants <em>de référence</em>.</h2>
     <p class="section-intro reveal">
-      Universitaires, diplomates, entrepreneurs, artistes et journalistes — 
+      Universitaires, diplomates, entrepreneurs, artistes et journalistes —
       les experts qui façonnent le dialogue Afrique-France.
     </p>
 
@@ -1484,6 +1843,213 @@ footer {
   </div>
 </section>
 
+<!-- ============ PRESSE ============ -->
+<section class="press" id="presse">
+  <div class="container">
+    <div class="press-grid">
+      <div class="press-visual reveal">
+        <div>
+          <div class="press-visual-label">Espace médias</div>
+          <div class="press-visual-num">
+            2026
+            <em>première édition</em>
+          </div>
+        </div>
+        <div class="press-visual-quote">
+          « Un événement diplomatique majeur qui place Saint-Étienne
+          au cœur du dialogue Afrique-France. »
+        </div>
+      </div>
+
+      <div class="press-content">
+        <div class="section-eyebrow reveal">Presse & médias</div>
+        <h2 class="section-title reveal">Un espace dédié aux <em>journalistes</em>.</h2>
+        <p class="section-intro reveal" style="margin-bottom: 2rem;">
+          Téléchargez nos ressources presse, accédez aux visuels HD et
+          retrouvez l'ensemble des éléments officiels de l'édition 2026.
+        </p>
+
+        <ul class="press-list reveal">
+          <li>
+            <div>
+              <div class="press-item-title">Dossier de presse 2026</div>
+              <div class="press-item-desc">PDF · 24 pages · 2.4 Mo</div>
+            </div>
+            <a href="#" class="press-download">Télécharger</a>
+          </li>
+          <li>
+            <div>
+              <div class="press-item-title">Communiqué de lancement</div>
+              <div class="press-item-desc">PDF · 2 pages · 180 Ko</div>
+            </div>
+            <a href="#" class="press-download">Télécharger</a>
+          </li>
+          <li>
+            <div>
+              <div class="press-item-title">Pack visuels HD</div>
+              <div class="press-item-desc">ZIP · logos, photos, charte · 18 Mo</div>
+            </div>
+            <a href="#" class="press-download">Télécharger</a>
+          </li>
+          <li>
+            <div>
+              <div class="press-item-title">Biographies des intervenants</div>
+              <div class="press-item-desc">PDF · 12 pages · 950 Ko</div>
+            </div>
+            <a href="#" class="press-download">Télécharger</a>
+          </li>
+        </ul>
+
+        <div class="press-contact reveal">
+          <h4>Contact presse</h4>
+          <p>
+            Pour toute demande d'interview, accréditation ou information complémentaire :<br>
+            <a href="mailto:presse@universite-automne.fr">presse@universite-automne.fr</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PAST EDITIONS ============ -->
+<section class="past" id="archives">
+  <div class="container">
+    <div class="section-eyebrow reveal">Archives</div>
+    <h2 class="section-title reveal">Éditions <em>précédentes</em>.</h2>
+    <p class="section-intro reveal">
+      L'Université d'Automne grandit chaque année. Retrouvez ici les archives
+      des éditions passées et les engagements pris pour l'avenir.
+    </p>
+
+    <div class="past-empty reveal">
+      <div class="past-empty-icon">2026</div>
+      <h3>Édition inaugurale</h3>
+      <p>
+        L'édition 2026 marque la naissance de l'Université d'Automne à Saint-Étienne.
+        Les archives complètes (vidéos, restitutions, photos) seront mises à disposition
+        ici dès la fin de l'événement.
+      </p>
+      <span class="badge">Première édition</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-eyebrow reveal">Questions fréquentes</div>
+    <h2 class="section-title reveal">Tout savoir <em>en pratique</em>.</h2>
+    <p class="section-intro reveal">
+      Les réponses aux questions les plus posées par les participants,
+      partenaires et intervenants.
+    </p>
+
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Où se déroule exactement l'événement ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            L'Université d'Automne se tient à la <strong>Cité du Design de Saint-Étienne</strong>,
+            site emblématique de l'ancienne Manufacture d'Armes réhabilitée. L'adresse précise
+            et les modalités d'accès vous seront communiquées par mail après inscription.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Comment se rendre à Saint-Étienne ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Saint-Étienne est accessible en <strong>TGV depuis Paris</strong> (2h45),
+            en <strong>TER depuis Lyon</strong> (45 min), et par l'aéroport de Lyon Saint-Exupéry
+            (1h en navette). Un service de navette gratuite sera mis en place entre la gare
+            Châteaucreux et la Cité du Design pendant les deux jours.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          L'inscription est-elle payante ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            L'accès à la plupart des sessions (conférences plénières, débats) est
+            <strong>gratuit sur inscription préalable</strong>. Certains ateliers et la
+            soirée culturelle pourront faire l'objet d'une contribution symbolique pour les places assises.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Où peut-on se loger pendant l'événement ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Plusieurs hôtels partenaires proposent des <strong>tarifs préférentiels</strong>
+            aux participants de l'Université d'Automne. La liste complète sera communiquée
+            avec les détails d'inscription. Saint-Étienne dispose d'une large offre hôtelière
+            à proximité immédiate de la Cité du Design.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          L'événement sera-t-il retransmis en direct ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Oui. Les <strong>plénières et conférences principales seront diffusées en direct</strong>
+            sur notre site et sur nos réseaux sociaux. Les replays seront mis à disposition
+            après l'événement dans l'espace archives.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          Comment devenir partenaire de l'événement ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            Nous accueillons institutions, entreprises et fondations qui souhaitent
+            soutenir le dialogue Afrique-France. Contactez-nous à
+            <a href="mailto:partenariats@universite-automne.fr">partenariats@universite-automne.fr</a>
+            pour recevoir notre dossier de partenariat.
+          </p>
+        </div>
+      </div>
+
+      <div class="faq-item reveal">
+        <button class="faq-question">
+          L'événement est-il accessible aux personnes à mobilité réduite ?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p>
+            <strong>Oui, l'ensemble du site est accessible PMR</strong>. Si vous avez des
+            besoins particuliers (accompagnement, traduction LSF, etc.), merci de nous
+            le signaler lors de votre inscription afin que nous organisions au mieux votre accueil.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ INSCRIPTION ============ -->
 <section class="register" id="inscription">
   <div class="container">
@@ -1499,7 +2065,7 @@ footer {
           Se pré-inscrire
           <span aria-hidden="true">→</span>
         </a>
-        <a href="#" class="btn btn-ghost">Télécharger le dossier (PDF)</a>
+        <a href="#presse" class="btn btn-ghost">Espace presse</a>
       </div>
     </div>
   </div>
@@ -1537,15 +2103,16 @@ footer {
         <li><a href="#thematiques">Thématiques</a></li>
         <li><a href="#programme">Programme</a></li>
         <li><a href="#intervenants">Intervenants</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </div>
 
     <div class="footer-col">
       <h4>Ressources</h4>
       <ul>
-        <li><a href="#">Dossier de presse</a></li>
+        <li><a href="#presse">Espace presse</a></li>
+        <li><a href="#archives">Archives</a></li>
         <li><a href="#">Brochure 2026</a></li>
-        <li><a href="#">Espace partenaires</a></li>
         <li><a href="#">Mentions légales</a></li>
       </ul>
     </div>
@@ -1554,6 +2121,7 @@ footer {
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:contact@universite-automne.fr">contact@universite-automne.fr</a></li>
+        <li><a href="mailto:presse@universite-automne.fr">presse@universite-automne.fr</a></li>
         <li><a href="tel:+33477000000">+33 4 77 00 00 00</a></li>
         <li><a href="#">Saint-Étienne, France</a></li>
       </ul>
@@ -1567,12 +2135,57 @@ footer {
 </footer>
 
 <script>
-// Menu mobile
+// ====== Menu mobile ======
 const burger = document.getElementById('burger');
 const navLinks = document.getElementById('navLinks');
 burger?.addEventListener('click', () => navLinks.classList.toggle('open'));
 
-// Tabs programme
+// ====== Navigation scroll effect ======
+const topNav = document.getElementById('topNav');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 80) topNav.classList.add('scrolled');
+  else topNav.classList.remove('scrolled');
+});
+
+// ====== Hero Carrousel ======
+const slides = document.querySelectorAll('.slide');
+const dots = document.querySelectorAll('.dot');
+let currentSlide = 0;
+let slideInterval;
+
+function goToSlide(index) {
+  slides[currentSlide].classList.remove('active');
+  dots[currentSlide].classList.remove('active');
+  currentSlide = (index + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  dots[currentSlide].classList.add('active');
+}
+
+function nextSlide() { goToSlide(currentSlide + 1); }
+function prevSlide() { goToSlide(currentSlide - 1); }
+
+function startAutoSlide() {
+  slideInterval = setInterval(nextSlide, 6500);
+}
+function stopAutoSlide() { clearInterval(slideInterval); }
+
+document.getElementById('nextSlide').addEventListener('click', () => {
+  stopAutoSlide(); nextSlide(); startAutoSlide();
+});
+document.getElementById('prevSlide').addEventListener('click', () => {
+  stopAutoSlide(); prevSlide(); startAutoSlide();
+});
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    stopAutoSlide();
+    goToSlide(parseInt(dot.dataset.go));
+    startAutoSlide();
+  });
+});
+
+startAutoSlide();
+
+// ====== Tabs programme ======
 document.querySelectorAll('.tab-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
@@ -1582,7 +2195,26 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
   });
 });
 
-// Reveal on scroll
+// ====== FAQ accordion ======
+document.querySelectorAll('.faq-question').forEach(q => {
+  q.addEventListener('click', () => {
+    const item = q.parentElement;
+    const wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!wasOpen) item.classList.add('open');
+  });
+});
+
+// ====== Lang switch (placeholder) ======
+document.querySelectorAll('.lang-switch button').forEach(b => {
+  b.addEventListener('click', (e) => {
+    if (b.textContent === 'EN') {
+      alert('La version anglaise sera disponible prochainement.\nThe English version will be available soon.');
+    }
+  });
+});
+
+// ====== Reveal on scroll ======
 const io = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -1592,16 +2224,6 @@ const io = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.12 });
 document.querySelectorAll('.reveal').forEach(el => io.observe(el));
-
-// Nav scroll effect
-const nav = document.querySelector('header.nav');
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 80) {
-    nav.style.boxShadow = '0 4px 20px rgba(27, 46, 75, 0.06)';
-  } else {
-    nav.style.boxShadow = 'none';
-  }
-});
 </script>
 
 </body>
