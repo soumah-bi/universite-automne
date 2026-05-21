@@ -81,9 +81,44 @@ header.nav.scrolled .burger span { background: var(--navy); }
   align-items: center;
   gap: 0.75rem;
   text-decoration: none;
+  padding-left: 52px;
+  transition: padding-left 0.3s ease;
+  position: relative;
 }
-.nav-logo img { height: 44px; width: auto; filter: brightness(0) invert(1); transition: filter 0.3s; }
-header.nav.scrolled .nav-logo img { filter: none; }
+header.nav.scrolled .nav-logo { padding-left: 0; }
+.nav-logo img {
+  height: 44px;
+  width: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+header.nav.scrolled .nav-logo img {
+  opacity: 1;
+  pointer-events: auto;
+}
+.nav-logo-mark {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--ocre), var(--ocre-deep));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--navy-deep);
+  letter-spacing: -0.02em;
+  flex-shrink: 0;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 4px 15px rgba(212, 146, 42, 0.4);
+}
+header.nav.scrolled .nav-logo-mark { opacity: 0; pointer-events: none; }
 
 .nav-logo-text {
   font-family: var(--font-display);
@@ -948,129 +983,166 @@ section { padding: 6rem var(--pad); position: relative; }
 }
 .speaker-role { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
 
-/* ============ PRESSE ============ */
-.press {
+/* ============ SPONSORS ============ */
+.sponsors {
   background: var(--cream);
   position: relative;
   overflow: hidden;
 }
-.press-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: center;
+.sponsors::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  left: -100px;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 139, 63, 0.08), transparent 70%);
+  pointer-events: none;
 }
-@media (max-width: 900px) { .press-grid { grid-template-columns: 1fr; } }
 
-.press-visual {
-  position: relative;
-  aspect-ratio: 4/5;
-  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
-  border-radius: 4px;
-  overflow: hidden;
-  padding: 3rem;
-  color: var(--cream);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.sponsors-tier {
+  margin-bottom: 3.5rem;
 }
-.press-visual::before {
+.sponsors-tier:last-child { margin-bottom: 0; }
+
+.tier-label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+.tier-label::before,
+.tier-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(27, 46, 75, 0.15);
+}
+.tier-label span {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.tier-label.tier-platinum span { color: var(--ocre-deep); }
+.tier-label.tier-platinum::before,
+.tier-label.tier-platinum::after { background: rgba(212, 146, 42, 0.3); }
+
+.sponsors-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+.sponsors-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.sponsors-grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.sponsors-grid.cols-5 { grid-template-columns: repeat(5, 1fr); }
+@media (max-width: 900px) {
+  .sponsors-grid.cols-3 { grid-template-columns: repeat(2, 1fr); }
+  .sponsors-grid.cols-4 { grid-template-columns: repeat(3, 1fr); }
+  .sponsors-grid.cols-5 { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 600px) {
+  .sponsors-grid.cols-3,
+  .sponsors-grid.cols-4,
+  .sponsors-grid.cols-5 { grid-template-columns: repeat(2, 1fr); }
+}
+
+.sponsor-card {
+  background: var(--paper);
+  border-radius: 4px;
+  padding: 2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 140px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(27, 46, 75, 0.06);
+  position: relative;
+}
+.sponsor-card.large { min-height: 180px; padding: 2.5rem 2rem; }
+.sponsor-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(27, 46, 75, 0.1);
+  border-color: rgba(212, 146, 42, 0.25);
+}
+.sponsor-card img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  filter: grayscale(40%);
+  opacity: 0.85;
+  transition: all 0.3s ease;
+}
+.sponsor-card.large img { max-height: 100px; }
+.sponsor-card:hover img {
+  filter: grayscale(0%);
+  opacity: 1;
+}
+
+/* Placeholder sponsor (en attente du logo) */
+.sponsor-placeholder {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--navy);
+  text-align: center;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.sponsor-placeholder small {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 0.4rem;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.sponsors-cta {
+  margin-top: 3.5rem;
+  background: linear-gradient(135deg, var(--navy), var(--navy-deep));
+  color: var(--cream);
+  padding: 3rem 2.5rem;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+}
+.sponsors-cta::before {
   content: '';
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 80% 20%, rgba(212, 146, 42, 0.25), transparent 50%),
-    radial-gradient(circle at 20% 80%, rgba(122, 139, 63, 0.2), transparent 50%);
+    radial-gradient(circle at 80% 30%, rgba(212, 146, 42, 0.18), transparent 50%),
+    radial-gradient(circle at 20% 80%, rgba(122, 139, 63, 0.15), transparent 50%);
 }
-.press-visual > * { position: relative; z-index: 1; }
-.press-visual-label {
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+.sponsors-cta > * { position: relative; z-index: 1; }
+.sponsors-cta-text h3 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+.sponsors-cta-text h3 em {
+  font-style: italic;
+  font-weight: 400;
   color: var(--ocre-light);
-  margin-bottom: 0.5rem;
 }
-.press-visual-num {
-  font-family: var(--font-display);
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 600;
-  line-height: 1;
-  letter-spacing: -0.03em;
+.sponsors-cta-text p {
+  color: rgba(248, 246, 241, 0.8);
+  font-size: 0.95rem;
+  max-width: 480px;
 }
-.press-visual-num em {
-  font-style: italic;
-  font-weight: 300;
-  color: var(--olive-light);
-  display: block;
-  font-size: 0.5em;
-  margin-top: 0.3rem;
-}
-.press-visual-quote {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 1.1rem;
-  line-height: 1.5;
-  color: rgba(248, 246, 241, 0.85);
-  border-left: 2px solid var(--ocre);
-  padding-left: 1.25rem;
-}
-
-.press-content h2 { margin-bottom: 2rem; }
-.press-list {
-  list-style: none;
-  margin-bottom: 2rem;
-}
-.press-list li {
-  padding: 1.25rem 0;
-  border-bottom: 1px solid rgba(27, 46, 75, 0.1);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
-}
-.press-list li:last-child { border-bottom: none; }
-.press-item-title {
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  color: var(--navy);
-  font-weight: 600;
-}
-.press-item-desc {
-  font-size: 0.85rem;
-  color: var(--muted);
-  margin-top: 0.2rem;
-}
-.press-download {
-  background: var(--ocre);
-  color: var(--navy-deep);
-  border: none;
-  padding: 0.5rem 1rem;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  cursor: pointer;
-  text-decoration: none;
-  transition: all 0.2s;
-  white-space: nowrap;
-}
-.press-download:hover { background: var(--ocre-light); transform: translateY(-1px); }
-
-.press-contact {
-  background: var(--paper);
-  padding: 1.5rem;
-  border-radius: 4px;
-  border-left: 3px solid var(--ocre);
-}
-.press-contact h4 {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  color: var(--navy);
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-}
-.press-contact p { font-size: 0.9rem; color: var(--muted); }
-.press-contact a { color: var(--ocre-deep); text-decoration: none; font-weight: 500; }
-.press-contact a:hover { text-decoration: underline; }
 
 /* ============ PAST EDITIONS ============ */
 .past {
@@ -1310,6 +1382,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
 <header class="nav" id="topNav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">
+      <span class="nav-logo-mark" aria-hidden="true">UA</span>
       <img src="Logo_UA.png" alt="Université d'Automne">
       <div class="nav-logo-text">
         Université d'Automne
@@ -1322,7 +1395,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         <li><a href="#thematiques">Thématiques</a></li>
         <li><a href="#programme">Programme</a></li>
         <li><a href="#intervenants">Intervenants</a></li>
-        <li><a href="#presse">Presse</a></li>
+        <li><a href="#sponsors">Sponsors</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -1355,8 +1428,8 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
           <span class="month">deux jours de dialogue Afrique-France</span>
         </div>
         <p class="hero-sub">
-          Un événement culturel, intellectuel et diplomatique au cœur de la
-          Cité du Design, accueillant experts africains et français de renommée internationale.
+          Un événement culturel, intellectuel et diplomatique au cœur de
+          Saint-Étienne, accueillant experts africains et français de renommée internationale.
         </p>
         <div class="hero-cta">
           <a href="#inscription" class="btn btn-primary">
@@ -1438,7 +1511,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         </div>
         <div class="meta-block">
           <div class="label">Lieu</div>
-          <div class="value">Cité du Design, Saint-Étienne</div>
+          <div class="value">Saint-Étienne, France</div>
         </div>
         <div class="meta-block">
           <div class="label">Format</div>
@@ -1843,71 +1916,128 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
   </div>
 </section>
 
-<!-- ============ PRESSE ============ -->
-<section class="press" id="presse">
+<!-- ============ SPONSORS ============ -->
+<section class="sponsors" id="sponsors">
   <div class="container">
-    <div class="press-grid">
-      <div class="press-visual reveal">
-        <div>
-          <div class="press-visual-label">Espace médias</div>
-          <div class="press-visual-num">
-            2026
-            <em>première édition</em>
+    <div class="section-eyebrow reveal">Ils soutiennent l'événement</div>
+    <h2 class="section-title reveal">Nos <em>sponsors</em> et partenaires.</h2>
+    <p class="section-intro reveal">
+      L'Université d'Automne est rendue possible grâce à l'engagement d'institutions,
+      d'entreprises et de mécènes qui croient au dialogue Afrique-France.
+    </p>
+
+    <!-- TIER 1 : Partenaire principal -->
+    <div class="sponsors-tier reveal">
+      <div class="tier-label tier-platinum">
+        <span>Partenaire principal</span>
+      </div>
+      <div class="sponsors-grid cols-3">
+        <div class="sponsor-card large">
+          <div class="sponsor-placeholder">
+            Ville de Saint-Étienne
+            <small>Partenaire fondateur</small>
           </div>
         </div>
-        <div class="press-visual-quote">
-          « Un événement diplomatique majeur qui place Saint-Étienne
-          au cœur du dialogue Afrique-France. »
+        <div class="sponsor-card large">
+          <div class="sponsor-placeholder">
+            Crédit Agricole
+            <small>Mécène principal</small>
+          </div>
+        </div>
+        <div class="sponsor-card large">
+          <div class="sponsor-placeholder">
+            Air France
+            <small>Transporteur officiel</small>
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="press-content">
-        <div class="section-eyebrow reveal">Presse & médias</div>
-        <h2 class="section-title reveal">Un espace dédié aux <em>journalistes</em>.</h2>
-        <p class="section-intro reveal" style="margin-bottom: 2rem;">
-          Téléchargez nos ressources presse, accédez aux visuels HD et
-          retrouvez l'ensemble des éléments officiels de l'édition 2026.
+    <!-- TIER 2 : Sponsors officiels -->
+    <div class="sponsors-tier reveal">
+      <div class="tier-label">
+        <span>Sponsors officiels</span>
+      </div>
+      <div class="sponsors-grid cols-4">
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            Région AURA
+            <small>Sponsor officiel</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            Saint-Étienne Métropole
+            <small>Sponsor officiel</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            Université Jean Monnet
+            <small>Partenaire académique</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            Institut français
+            <small>Partenaire culturel</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIER 3 : Partenaires médias -->
+    <div class="sponsors-tier reveal">
+      <div class="tier-label">
+        <span>Partenaires médias</span>
+      </div>
+      <div class="sponsors-grid cols-5">
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            Le Progrès
+            <small>Média partenaire</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            Jeune Afrique
+            <small>Média partenaire</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            RFI
+            <small>Média partenaire</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            France 3 AURA
+            <small>Média partenaire</small>
+          </div>
+        </div>
+        <div class="sponsor-card">
+          <div class="sponsor-placeholder">
+            TV5 Monde
+            <small>Média partenaire</small>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA : Devenir sponsor -->
+    <div class="sponsors-cta reveal">
+      <div class="sponsors-cta-text">
+        <h3>Votre marque, <em>au cœur du dialogue</em>.</h3>
+        <p>
+          Rejoignez les partenaires de l'Université d'Automne et associez
+          votre marque à un événement de dimension internationale.
         </p>
-
-        <ul class="press-list reveal">
-          <li>
-            <div>
-              <div class="press-item-title">Dossier de presse 2026</div>
-              <div class="press-item-desc">PDF · 24 pages · 2.4 Mo</div>
-            </div>
-            <a href="#" class="press-download">Télécharger</a>
-          </li>
-          <li>
-            <div>
-              <div class="press-item-title">Communiqué de lancement</div>
-              <div class="press-item-desc">PDF · 2 pages · 180 Ko</div>
-            </div>
-            <a href="#" class="press-download">Télécharger</a>
-          </li>
-          <li>
-            <div>
-              <div class="press-item-title">Pack visuels HD</div>
-              <div class="press-item-desc">ZIP · logos, photos, charte · 18 Mo</div>
-            </div>
-            <a href="#" class="press-download">Télécharger</a>
-          </li>
-          <li>
-            <div>
-              <div class="press-item-title">Biographies des intervenants</div>
-              <div class="press-item-desc">PDF · 12 pages · 950 Ko</div>
-            </div>
-            <a href="#" class="press-download">Télécharger</a>
-          </li>
-        </ul>
-
-        <div class="press-contact reveal">
-          <h4>Contact presse</h4>
-          <p>
-            Pour toute demande d'interview, accréditation ou information complémentaire :<br>
-            <a href="mailto:presse@universite-automne.fr">presse@universite-automne.fr</a>
-          </p>
-        </div>
       </div>
+      <a href="mailto:partenariats@universite-automne.fr" class="btn btn-primary">
+        Devenir sponsor
+        <span aria-hidden="true">→</span>
+      </a>
     </div>
   </div>
 </section>
@@ -1953,9 +2083,9 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         </button>
         <div class="faq-answer">
           <p>
-            L'Université d'Automne se tient à la <strong>Cité du Design de Saint-Étienne</strong>,
-            site emblématique de l'ancienne Manufacture d'Armes réhabilitée. L'adresse précise
-            et les modalités d'accès vous seront communiquées par mail après inscription.
+            L'Université d'Automne se tient à <strong>Saint-Étienne</strong>,
+            au cœur de la ville. L'adresse précise du lieu d'accueil ainsi que
+            les modalités d'accès vous seront communiquées par mail après inscription.
           </p>
         </div>
       </div>
@@ -1970,7 +2100,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
             Saint-Étienne est accessible en <strong>TGV depuis Paris</strong> (2h45),
             en <strong>TER depuis Lyon</strong> (45 min), et par l'aéroport de Lyon Saint-Exupéry
             (1h en navette). Un service de navette gratuite sera mis en place entre la gare
-            Châteaucreux et la Cité du Design pendant les deux jours.
+            Châteaucreux et le lieu de l'événement pendant les deux jours.
           </p>
         </div>
       </div>
@@ -1999,7 +2129,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
             Plusieurs hôtels partenaires proposent des <strong>tarifs préférentiels</strong>
             aux participants de l'Université d'Automne. La liste complète sera communiquée
             avec les détails d'inscription. Saint-Étienne dispose d'une large offre hôtelière
-            à proximité immédiate de la Cité du Design.
+            à proximité immédiate du lieu de l'événement.
           </p>
         </div>
       </div>
@@ -2065,22 +2195,8 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
           Se pré-inscrire
           <span aria-hidden="true">→</span>
         </a>
-        <a href="#presse" class="btn btn-ghost">Espace presse</a>
+        <a href="#sponsors" class="btn btn-ghost">Devenir sponsor</a>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PARTENAIRES ============ -->
-<section class="partners">
-  <div class="container">
-    <div class="partners-title">Avec le soutien de</div>
-    <div class="partners-grid">
-      <div class="partner-logo">Ville de Saint-Étienne</div>
-      <div class="partner-logo">Région AURA</div>
-      <div class="partner-logo">Université Jean Monnet</div>
-      <div class="partner-logo">Sciences Po Lyon</div>
-      <div class="partner-logo">Institut français</div>
     </div>
   </div>
 </section>
@@ -2110,9 +2226,9 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
     <div class="footer-col">
       <h4>Ressources</h4>
       <ul>
-        <li><a href="#presse">Espace presse</a></li>
+        <li><a href="#sponsors">Sponsors & partenaires</a></li>
+        <li><a href="mailto:partenariats@universite-automne.fr">Devenir partenaire</a></li>
         <li><a href="#archives">Archives</a></li>
-        <li><a href="#">Brochure 2026</a></li>
         <li><a href="#">Mentions légales</a></li>
       </ul>
     </div>
@@ -2121,7 +2237,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <h4>Contact</h4>
       <ul>
         <li><a href="mailto:contact@universite-automne.fr">contact@universite-automne.fr</a></li>
-        <li><a href="mailto:presse@universite-automne.fr">presse@universite-automne.fr</a></li>
+        <li><a href="mailto:partenariats@universite-automne.fr">partenariats@universite-automne.fr</a></li>
         <li><a href="tel:+33477000000">+33 4 77 00 00 00</a></li>
         <li><a href="#">Saint-Étienne, France</a></li>
       </ul>
