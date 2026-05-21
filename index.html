@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Université d'Automne — Saint-Étienne · 30 & 31 octobre 2026</title>
+<title>Université d'Automne — Saint-Étienne · 30 et 31 octobre 2026</title>
 <meta name="description" content="Événement culturel, intellectuel et diplomatique réunissant experts africains et français à Saint-Étienne les 30 et 31 octobre 2026.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,8 +63,6 @@ header.nav.scrolled {
 header.nav.scrolled .nav-logo-text { color: var(--navy); }
 header.nav.scrolled .nav-logo-text small { color: var(--ocre-deep); }
 header.nav.scrolled .nav-links a { color: var(--navy); }
-header.nav.scrolled .lang-switch { color: var(--navy); }
-header.nav.scrolled .lang-switch .active { color: var(--ocre-deep); }
 header.nav.scrolled .burger span { background: var(--navy); }
 
 .nav-inner {
@@ -171,32 +169,6 @@ header.nav.scrolled .nav-logo-mark { opacity: 0; pointer-events: none; }
   align-items: center;
   gap: 1.25rem;
 }
-.lang-switch {
-  font-size: 0.82rem;
-  font-weight: 500;
-  color: var(--cream);
-  letter-spacing: 0.08em;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  transition: color 0.3s;
-}
-.lang-switch button {
-  background: none;
-  border: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-  padding: 0.2rem;
-  opacity: 0.5;
-  transition: opacity 0.2s;
-}
-.lang-switch button.active {
-  opacity: 1;
-  color: var(--ocre-light);
-}
-.lang-switch button:hover { opacity: 1; }
-.lang-switch span { opacity: 0.4; }
 
 .nav-cta {
   background: linear-gradient(135deg, var(--ocre), var(--ocre-deep));
@@ -237,7 +209,6 @@ header.nav.scrolled .nav-logo-mark { opacity: 0; pointer-events: none; }
 }
 @media (max-width: 600px) {
   .nav-cta { padding: 0.55rem 1rem; font-size: 0.8rem; }
-  .lang-switch { font-size: 0.75rem; }
 }
 
 /* ============ HERO CARROUSEL ============ */
@@ -1321,7 +1292,65 @@ section { padding: 6rem var(--pad); position: relative; }
 .partner-logo:hover { opacity: 1; }
 
 /* ============ FOOTER ============ */
-footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding: 4rem var(--pad) 2rem; }
+footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding: 0 var(--pad) 2rem; }
+
+.footer-cta {
+  max-width: var(--max);
+  margin: 0 auto 4rem;
+  padding: 3.5rem 0 4rem;
+  border-bottom: 1px solid rgba(248, 246, 241, 0.1);
+}
+.footer-cta-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.footer-cta-eyebrow {
+  font-size: 0.78rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ocre-light);
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+.footer-cta h3 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  max-width: 560px;
+}
+.footer-cta h3 em {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ocre-light);
+}
+.footer-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: var(--ocre);
+  color: var(--navy-deep);
+  text-decoration: none;
+  padding: 1rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(212, 146, 42, 0.25);
+}
+.footer-cta-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(212, 146, 42, 0.4);
+  background: var(--ocre-light);
+}
+.footer-cta-btn span { transition: transform 0.3s ease; }
+.footer-cta-btn:hover span { transform: translateX(4px); }
+
 .footer-grid {
   max-width: var(--max);
   margin: 0 auto;
@@ -1400,12 +1429,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       </ul>
     </nav>
     <div class="nav-right">
-      <div class="lang-switch">
-        <button class="active">FR</button>
-        <span>|</span>
-        <button title="Version anglaise à venir">EN</button>
-      </div>
-      <a href="#inscription" class="nav-cta">S'inscrire ›</a>
+      <a href="#contact" class="nav-cta">Nous contacter ›</a>
       <button class="burger" id="burger" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
@@ -1424,7 +1448,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="slide-content">
         <div class="hero-eyebrow">Édition inaugurale · Saint-Étienne</div>
         <div class="hero-date-big">
-          30 & 31 octobre 2026
+          30 - 31 octobre 2026
           <span class="month">deux jours de dialogue Afrique-France</span>
         </div>
         <p class="hero-sub">
@@ -1432,11 +1456,11 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
           Saint-Étienne, accueillant experts africains et français de renommée internationale.
         </p>
         <div class="hero-cta">
-          <a href="#inscription" class="btn btn-primary">
-            Réserver ma place
+          <a href="#programme" class="btn btn-primary">
+            Découvrir le programme
             <span aria-hidden="true">→</span>
           </a>
-          <a href="#programme" class="btn btn-ghost">Découvrir le programme</a>
+          <a href="#contexte" class="btn btn-ghost">Notre vision</a>
         </div>
       </div>
     </div>
@@ -1486,7 +1510,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
             <div class="lbl">grandes thématiques</div>
           </div>
           <div class="hero-stat">
-            <div class="num">1000</div>
+            <div class="num">500</div>
             <div class="lbl">participants attendus</div>
           </div>
         </div>
@@ -1515,7 +1539,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         </div>
         <div class="meta-block">
           <div class="label">Format</div>
-          <div class="value">Présentiel & live</div>
+          <div class="value">Présentiel et live</div>
         </div>
       </div>
       <div class="hero-controls">
@@ -1577,7 +1601,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
           <div class="stat-lbl">grandes thématiques abordées</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">1000</div>
+          <div class="stat-num">500</div>
           <div class="stat-lbl">participants attendus sur place</div>
         </div>
       </div>
@@ -1658,7 +1682,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="theme-item reveal">
         <div class="theme-num">02</div>
         <div>
-          <div class="theme-title">Économie, investissement & développement</div>
+          <div class="theme-title">Économie, investissement et développement</div>
           <div class="theme-desc">Filières d'avenir, industries créatives, financement de la transition et coopérations économiques.</div>
         </div>
         <div class="theme-arrow">→</div>
@@ -1667,7 +1691,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="theme-item reveal">
         <div class="theme-num">03</div>
         <div>
-          <div class="theme-title">Diasporas, mobilités & cohésion sociale</div>
+          <div class="theme-title">Diasporas, mobilités et cohésion sociale</div>
           <div class="theme-desc">Le rôle des diasporas africaines en France, mémoire partagée et fabrique du commun.</div>
         </div>
         <div class="theme-arrow">→</div>
@@ -1676,7 +1700,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="theme-item reveal">
         <div class="theme-num">04</div>
         <div>
-          <div class="theme-title">Culture, jeunesse & récit africain</div>
+          <div class="theme-title">Culture, jeunesse et récit africain</div>
           <div class="theme-desc">Industries culturelles, panafricanisme contemporain, voix d'une nouvelle génération.</div>
         </div>
         <div class="theme-arrow">→</div>
@@ -1685,7 +1709,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="theme-item reveal">
         <div class="theme-num">05</div>
         <div>
-          <div class="theme-title">Climat, énergie & transitions</div>
+          <div class="theme-title">Climat, énergie et transitions</div>
           <div class="theme-desc">Adaptation, ressources critiques et justice climatique au cœur du dialogue Nord-Sud.</div>
         </div>
         <div class="theme-arrow">→</div>
@@ -1740,12 +1764,12 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         </div>
         <div class="timeline-row break">
           <div class="t-time">12h00</div>
-          <div><div class="t-title">Déjeuner & networking</div></div>
+          <div><div class="t-title">Déjeuner et networking</div></div>
         </div>
         <div class="timeline-row">
           <div class="t-time">14h00</div>
           <div>
-            <div class="t-title">Table ronde · Économie & investissement</div>
+            <div class="t-title">Table ronde · Économie et investissement</div>
             <div class="t-desc">Filières d'avenir, financement de la transition et coopérations économiques franco-africaines.</div>
             <div class="t-speaker">3 experts · modérée par un journaliste de référence</div>
           </div>
@@ -1779,14 +1803,14 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         <div class="timeline-row">
           <div class="t-time">10h30</div>
           <div>
-            <div class="t-title">Table ronde · Climat & transitions</div>
+            <div class="t-title">Table ronde · Climat et transitions</div>
             <div class="t-desc">Adaptation, ressources critiques et justice climatique au cœur du dialogue Nord-Sud.</div>
             <div class="t-speaker">4 experts · regard croisé Afrique–France</div>
           </div>
         </div>
         <div class="timeline-row break">
           <div class="t-time">12h30</div>
-          <div><div class="t-title">Déjeuner & networking</div></div>
+          <div><div class="t-title">Déjeuner et networking</div></div>
         </div>
         <div class="timeline-row">
           <div class="t-time">14h00</div>
@@ -2025,43 +2049,6 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       </div>
     </div>
 
-    <!-- CTA : Devenir sponsor -->
-    <div class="sponsors-cta reveal">
-      <div class="sponsors-cta-text">
-        <h3>Votre marque, <em>au cœur du dialogue</em>.</h3>
-        <p>
-          Rejoignez les partenaires de l'Université d'Automne et associez
-          votre marque à un événement de dimension internationale.
-        </p>
-      </div>
-      <a href="mailto:partenariats@universite-automne.fr" class="btn btn-primary">
-        Devenir sponsor
-        <span aria-hidden="true">→</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ============ PAST EDITIONS ============ -->
-<section class="past" id="archives">
-  <div class="container">
-    <div class="section-eyebrow reveal">Archives</div>
-    <h2 class="section-title reveal">Éditions <em>précédentes</em>.</h2>
-    <p class="section-intro reveal">
-      L'Université d'Automne grandit chaque année. Retrouvez ici les archives
-      des éditions passées et les engagements pris pour l'avenir.
-    </p>
-
-    <div class="past-empty reveal">
-      <div class="past-empty-icon">2026</div>
-      <h3>Édition inaugurale</h3>
-      <p>
-        L'édition 2026 marque la naissance de l'Université d'Automne à Saint-Étienne.
-        Les archives complètes (vidéos, restitutions, photos) seront mises à disposition
-        ici dès la fin de l'événement.
-      </p>
-      <span class="badge">Première édition</span>
-    </div>
   </div>
 </section>
 
@@ -2180,29 +2167,22 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
   </div>
 </section>
 
-<!-- ============ INSCRIPTION ============ -->
-<section class="register" id="inscription">
-  <div class="container">
-    <div class="register-inner reveal">
-      <div class="section-eyebrow">Inscription</div>
-      <h2 class="section-title">Rejoignez la conversation <em>Afrique-France</em>.</h2>
-      <p>
-        Les inscriptions ouvriront en juin 2026. Pré-inscrivez-vous dès maintenant
-        pour recevoir le programme détaillé et bénéficier d'un accès prioritaire.
-      </p>
-      <div class="hero-cta" style="justify-content: center;">
-        <a href="#contact" class="btn btn-primary">
-          Se pré-inscrire
-          <span aria-hidden="true">→</span>
-        </a>
-        <a href="#sponsors" class="btn btn-ghost">Devenir sponsor</a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ============ FOOTER ============ -->
 <footer id="contact">
+
+  <div class="footer-cta">
+    <div class="footer-cta-inner">
+      <div>
+        <div class="footer-cta-eyebrow">Vous souhaitez participer ?</div>
+        <h3>Pour participer à l'événement, <em>écrivez-nous</em>.</h3>
+      </div>
+      <a href="mailto:contact@universite-automne.fr" class="footer-cta-btn">
+        contact@universite-automne.fr
+        <span aria-hidden="true">→</span>
+      </a>
+    </div>
+  </div>
+
   <div class="footer-grid">
     <div class="footer-brand">
       <img src="Logo_UA.png" alt="Université d'Automne">
@@ -2226,9 +2206,9 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
     <div class="footer-col">
       <h4>Ressources</h4>
       <ul>
-        <li><a href="#sponsors">Sponsors & partenaires</a></li>
+        <li><a href="#sponsors">Sponsors et partenaires</a></li>
         <li><a href="mailto:partenariats@universite-automne.fr">Devenir partenaire</a></li>
-        <li><a href="#archives">Archives</a></li>
+        <li><a href="#faq">Questions fréquentes</a></li>
         <li><a href="#">Mentions légales</a></li>
       </ul>
     </div>
@@ -2318,15 +2298,6 @@ document.querySelectorAll('.faq-question').forEach(q => {
     const wasOpen = item.classList.contains('open');
     document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
     if (!wasOpen) item.classList.add('open');
-  });
-});
-
-// ====== Lang switch (placeholder) ======
-document.querySelectorAll('.lang-switch button').forEach(b => {
-  b.addEventListener('click', (e) => {
-    if (b.textContent === 'EN') {
-      alert('La version anglaise sera disponible prochainement.\nThe English version will be available soon.');
-    }
   });
 });
 
