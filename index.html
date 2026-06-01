@@ -1161,69 +1161,158 @@ section { padding: 6rem var(--pad); position: relative; }
   font-weight: 600;
 }
 
-/* ============ FAQ ============ */
-.faq {
+/* ============ ÉQUIPE PROJET ============ */
+.team {
   background: var(--cream-warm);
+  position: relative;
+  overflow: hidden;
 }
-.faq-list {
-  max-width: 880px;
-  margin: 0 auto;
+.team::before {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: -120px;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(122, 139, 63, 0.1), transparent 70%);
+  pointer-events: none;
 }
-.faq-item {
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.team-card {
   background: var(--paper);
   border-radius: 4px;
-  margin-bottom: 0.75rem;
   overflow: hidden;
-  border-left: 3px solid transparent;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
-.faq-item.open {
-  border-left-color: var(--ocre);
-  box-shadow: 0 8px 25px rgba(27, 46, 75, 0.06);
+.team-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 50px rgba(27, 46, 75, 0.12);
 }
-.faq-question {
+
+.team-photo-wrap {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--navy), var(--olive));
+}
+.team-photo-wrap img {
   width: 100%;
-  background: none;
-  border: none;
-  padding: 1.5rem 1.75rem;
-  text-align: left;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease, filter 0.4s ease;
+  filter: grayscale(15%);
+}
+.team-card:hover .team-photo-wrap img {
+  transform: scale(1.05);
+  filter: grayscale(0%);
+}
+
+/* Placeholder (en attente de photo) */
+.team-photo-wrap.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+}
+.team-photo-wrap.placeholder::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.1) 1px, transparent 0);
+  background-size: 20px 20px;
+}
+.team-card:nth-child(3n) .team-photo-wrap.placeholder { background: linear-gradient(135deg, var(--ocre), var(--navy-light)); }
+.team-card:nth-child(3n+1) .team-photo-wrap.placeholder { background: linear-gradient(135deg, var(--navy), var(--olive)); }
+.team-card:nth-child(3n+2) .team-photo-wrap.placeholder { background: linear-gradient(135deg, var(--olive-deep), var(--ocre-deep)); }
+
+.team-initials {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 3.5rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  position: relative;
+  z-index: 1;
+}
+
+.team-role-tag {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: var(--cream);
+  color: var(--navy);
+  padding: 0.35rem 0.8rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  font-weight: 600;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+.team-role-tag.founder {
+  background: var(--ocre);
+  color: var(--navy-deep);
+}
+
+.team-info {
+  padding: 1.5rem 1.5rem 1.75rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.team-name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--navy);
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 1rem;
+  margin-bottom: 0.3rem;
   letter-spacing: -0.01em;
-  transition: color 0.2s;
 }
-.faq-question:hover { color: var(--ocre-deep); }
-.faq-icon {
-  font-size: 1.5rem;
-  color: var(--ocre);
-  transition: transform 0.3s ease;
-  font-weight: 300;
-  line-height: 1;
+.team-title {
+  font-size: 0.85rem;
+  color: var(--ocre-deep);
+  font-weight: 500;
+  margin-bottom: 1rem;
+  letter-spacing: 0.02em;
 }
-.faq-item.open .faq-icon { transform: rotate(45deg); }
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s ease;
-  padding: 0 1.75rem;
-}
-.faq-item.open .faq-answer {
-  max-height: 400px;
-  padding: 0 1.75rem 1.5rem;
-}
-.faq-answer p {
+.team-desc {
+  font-size: 0.92rem;
   color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.65;
+  line-height: 1.55;
+  flex: 1;
 }
-.faq-answer a { color: var(--ocre-deep); text-decoration: underline; }
+
+/* Mention "à venir" */
+.team-coming {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: rgba(212, 146, 42, 0.06);
+  border: 1px dashed rgba(212, 146, 42, 0.3);
+  border-radius: 4px;
+}
+.team-coming p {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.team-coming p em {
+  color: var(--ocre-deep);
+  font-weight: 600;
+  font-style: normal;
+}
 
 /* ============ INSCRIPTION ============ */
 .register {
@@ -1425,7 +1514,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         <li><a href="#programme">Programme</a></li>
         <li><a href="#intervenants">Intervenants</a></li>
         <li><a href="#sponsors">Sponsors</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#equipe">Équipe projet</a></li>
       </ul>
     </nav>
     <div class="nav-right">
@@ -2052,117 +2141,131 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
   </div>
 </section>
 
-<!-- ============ FAQ ============ -->
-<section class="faq" id="faq">
+<!-- ============ ÉQUIPE PROJET ============ -->
+<section class="team" id="equipe">
   <div class="container">
-    <div class="section-eyebrow reveal">Questions fréquentes</div>
-    <h2 class="section-title reveal">Tout savoir <em>en pratique</em>.</h2>
+    <div class="section-eyebrow reveal">L'équipe projet</div>
+    <h2 class="section-title reveal">Les <em>femmes et hommes</em> derrière l'événement.</h2>
     <p class="section-intro reveal">
-      Les réponses aux questions les plus posées par les participants,
-      partenaires et intervenants.
+      Une équipe de sept personnes engagées, qui a pensé, structuré et fait vivre
+      le projet Université d'Automne — de la première idée à la réalisation.
     </p>
 
-    <div class="faq-list">
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          Où se déroule exactement l'événement ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            L'Université d'Automne se tient à <strong>Saint-Étienne</strong>,
-            au cœur de la ville. L'adresse précise du lieu d'accueil ainsi que
-            les modalités d'accès vous seront communiquées par mail après inscription.
+    <div class="team-grid">
+
+      <!-- MEMBRE 1 : Abdoulaye SOUMAH -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap">
+          <span class="team-role-tag">Membre 01</span>
+          <img src="team-abdoulaye.jpg" alt="Abdoulaye SOUMAH">
+        </div>
+        <div class="team-info">
+          <div class="team-name">Abdoulaye SOUMAH</div>
+          <div class="team-title">Data Analyst · MBA Big Data Management</div>
+          <p class="team-desc">
+            Data Analyst avec une formation MBA en Big Data Management.
+            Actuellement consultant pour un grand groupe français.
           </p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          Comment se rendre à Saint-Étienne ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Saint-Étienne est accessible en <strong>TGV depuis Paris</strong> (2h45),
-            en <strong>TER depuis Lyon</strong> (45 min), et par l'aéroport de Lyon Saint-Exupéry
-            (1h en navette). Un service de navette gratuite sera mis en place entre la gare
-            Châteaucreux et le lieu de l'événement pendant les deux jours.
+      <!-- MEMBRE 2 : À venir -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap placeholder">
+          <span class="team-role-tag">Membre 02</span>
+          <div class="team-initials">UA</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Bientôt révélé</div>
+          <div class="team-title">Membre de l'équipe projet</div>
+          <p class="team-desc">
+            Le portrait et la description de ce membre seront prochainement publiés.
           </p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          L'inscription est-elle payante ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            L'accès à la plupart des sessions (conférences plénières, débats) est
-            <strong>gratuit sur inscription préalable</strong>. Certains ateliers et la
-            soirée culturelle pourront faire l'objet d'une contribution symbolique pour les places assises.
+      <!-- MEMBRE 3 : À venir -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap placeholder">
+          <span class="team-role-tag">Membre 03</span>
+          <div class="team-initials">UA</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Bientôt révélé</div>
+          <div class="team-title">Membre de l'équipe projet</div>
+          <p class="team-desc">
+            Le portrait et la description de ce membre seront prochainement publiés.
           </p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          Où peut-on se loger pendant l'événement ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Plusieurs hôtels partenaires proposent des <strong>tarifs préférentiels</strong>
-            aux participants de l'Université d'Automne. La liste complète sera communiquée
-            avec les détails d'inscription. Saint-Étienne dispose d'une large offre hôtelière
-            à proximité immédiate du lieu de l'événement.
+      <!-- MEMBRE 4 : À venir -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap placeholder">
+          <span class="team-role-tag">Membre 04</span>
+          <div class="team-initials">UA</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Bientôt révélé</div>
+          <div class="team-title">Membre de l'équipe projet</div>
+          <p class="team-desc">
+            Le portrait et la description de ce membre seront prochainement publiés.
           </p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          L'événement sera-t-il retransmis en direct ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Oui. Les <strong>plénières et conférences principales seront diffusées en direct</strong>
-            sur notre site et sur nos réseaux sociaux. Les replays seront mis à disposition
-            après l'événement dans l'espace archives.
+      <!-- MEMBRE 5 : À venir -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap placeholder">
+          <span class="team-role-tag">Membre 05</span>
+          <div class="team-initials">UA</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Bientôt révélé</div>
+          <div class="team-title">Membre de l'équipe projet</div>
+          <p class="team-desc">
+            Le portrait et la description de ce membre seront prochainement publiés.
           </p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          Comment devenir partenaire de l'événement ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            Nous accueillons institutions, entreprises et fondations qui souhaitent
-            soutenir le dialogue Afrique-France. Contactez-nous à
-            <a href="mailto:partenariats@universite-automne.fr">partenariats@universite-automne.fr</a>
-            pour recevoir notre dossier de partenariat.
+      <!-- MEMBRE 6 : À venir -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap placeholder">
+          <span class="team-role-tag">Membre 06</span>
+          <div class="team-initials">UA</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Bientôt révélé</div>
+          <div class="team-title">Membre de l'équipe projet</div>
+          <p class="team-desc">
+            Le portrait et la description de ce membre seront prochainement publiés.
           </p>
         </div>
       </div>
 
-      <div class="faq-item reveal">
-        <button class="faq-question">
-          L'événement est-il accessible aux personnes à mobilité réduite ?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          <p>
-            <strong>Oui, l'ensemble du site est accessible PMR</strong>. Si vous avez des
-            besoins particuliers (accompagnement, traduction LSF, etc.), merci de nous
-            le signaler lors de votre inscription afin que nous organisions au mieux votre accueil.
+      <!-- MEMBRE 7 : À venir -->
+      <div class="team-card reveal">
+        <div class="team-photo-wrap placeholder">
+          <span class="team-role-tag">Membre 07</span>
+          <div class="team-initials">UA</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">Bientôt révélé</div>
+          <div class="team-title">Membre de l'équipe projet</div>
+          <p class="team-desc">
+            Le portrait et la description de ce membre seront prochainement publiés.
           </p>
         </div>
       </div>
+
+    </div>
+
+    <div class="team-coming reveal">
+      <p>
+        <em>Une équipe de 7 personnes</em> — les portraits des autres membres
+        seront révélés au fil des prochaines semaines.
+      </p>
     </div>
   </div>
 </section>
@@ -2176,8 +2279,8 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         <div class="footer-cta-eyebrow">Vous souhaitez participer ?</div>
         <h3>Pour participer à l'événement, <em>écrivez-nous</em>.</h3>
       </div>
-      <a href="mailto:contact@universite-automne.fr" class="footer-cta-btn">
-        contact@universite-automne.fr
+      <a href="mailto:universiteautomne42@gmail.com" class="footer-cta-btn">
+        universiteautomne42@gmail.com
         <span aria-hidden="true">→</span>
       </a>
     </div>
@@ -2199,7 +2302,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         <li><a href="#thematiques">Thématiques</a></li>
         <li><a href="#programme">Programme</a></li>
         <li><a href="#intervenants">Intervenants</a></li>
-        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#equipe">Équipe projet</a></li>
       </ul>
     </div>
 
@@ -2207,8 +2310,8 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <h4>Ressources</h4>
       <ul>
         <li><a href="#sponsors">Sponsors et partenaires</a></li>
-        <li><a href="mailto:partenariats@universite-automne.fr">Devenir partenaire</a></li>
-        <li><a href="#faq">Questions fréquentes</a></li>
+        <li><a href="mailto:universiteautomne42@gmail.com">Devenir partenaire</a></li>
+        <li><a href="#equipe">L'équipe projet</a></li>
         <li><a href="#">Mentions légales</a></li>
       </ul>
     </div>
@@ -2216,8 +2319,8 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
     <div class="footer-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="mailto:contact@universite-automne.fr">contact@universite-automne.fr</a></li>
-        <li><a href="mailto:partenariats@universite-automne.fr">partenariats@universite-automne.fr</a></li>
+        <li><a href="mailto:universiteautomne42@gmail.com">universiteautomne42@gmail.com</a></li>
+        <li><a href="mailto:universiteautomne42@gmail.com">universiteautomne42@gmail.com</a></li>
         <li><a href="tel:+33477000000">+33 4 77 00 00 00</a></li>
         <li><a href="#">Saint-Étienne, France</a></li>
       </ul>
@@ -2288,16 +2391,6 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
     document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
     btn.classList.add('active');
     document.getElementById(btn.dataset.tab).classList.add('active');
-  });
-});
-
-// ====== FAQ accordion ======
-document.querySelectorAll('.faq-question').forEach(q => {
-  q.addEventListener('click', () => {
-    const item = q.parentElement;
-    const wasOpen = item.classList.contains('open');
-    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-    if (!wasOpen) item.classList.add('open');
   });
 });
 
