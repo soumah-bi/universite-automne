@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Université d'Automne — Saint-Étienne · 30 et 31 octobre 2026</title>
-<meta name="description" content="Événement culturel, intellectuel et diplomatique réunissant experts africains et français à Saint-Étienne les 30 et 31 octobre 2026.">
+<title>Université d'Automne — Saint-Étienne · 29 et 30 octobre 2027</title>
+<meta name="description" content="Événement culturel, intellectuel et diplomatique réunissant experts africains et français à Saint-Étienne les 29 et 30 octobre 2027.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -607,6 +607,36 @@ section { padding: 6rem var(--pad); position: relative; }
   color: var(--navy);
   margin-bottom: 1.25rem;
   line-height: 1.75;
+}
+.context-text p.context-org {
+  margin-top: 1.75rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(212, 146, 42, 0.08);
+  border-left: 3px solid var(--ocre);
+  border-radius: 4px;
+  font-size: 0.98rem;
+  font-style: italic;
+  color: var(--navy);
+}
+.context-text p.context-org a {
+  color: var(--ocre-deep);
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.context-text p.context-org a:hover {
+  color: var(--navy);
+  text-decoration: underline;
+}
+.context-text p.context-org::first-letter {
+  font-family: inherit;
+  font-size: inherit;
+  float: none;
+  color: inherit;
+  margin: 0;
+  line-height: inherit;
+  font-weight: inherit;
 }
 .context-text p:first-of-type::first-letter {
   font-family: var(--font-display);
@@ -1464,6 +1494,23 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
 
 .footer-brand img { height: 56px; margin-bottom: 1rem; filter: brightness(0) invert(1) opacity(0.9); }
 .footer-brand p { font-size: 0.9rem; line-height: 1.6; max-width: 320px; }
+.footer-brand p.footer-org {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(248, 246, 241, 0.1);
+  font-size: 0.85rem;
+  color: rgba(248, 246, 241, 0.85);
+}
+.footer-brand p.footer-org a {
+  color: var(--ocre-light);
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-brand p.footer-org a:hover {
+  color: var(--ocre);
+  text-decoration: underline;
+}
 
 .footer-col h4 {
   font-family: var(--font-display);
@@ -1515,7 +1562,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <img src="Logo_UA.png" alt="Université d'Automne">
       <div class="nav-logo-text">
         Université d'Automne
-        <small>Saint-Étienne · 2026</small>
+        <small>Saint-Étienne · 2027</small>
       </div>
     </a>
     <nav>
@@ -1548,7 +1595,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="slide-content">
         <div class="hero-eyebrow">Édition inaugurale · Saint-Étienne</div>
         <div class="hero-date-big">
-          30 - 31 octobre 2026
+          29 - 30 octobre 2027
           <span class="month">deux jours de dialogue Afrique-France</span>
         </div>
         <p class="hero-sub">
@@ -1595,7 +1642,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="slide-bg"></div>
       <div class="slide-overlay"></div>
       <div class="slide-content">
-        <div class="hero-eyebrow">L'édition 2026 en chiffres</div>
+        <div class="hero-eyebrow">L'édition 2027 en chiffres</div>
         <h1>
           Une ambition <em>internationale</em><br>
           ancrée à Saint-Étienne.
@@ -1631,7 +1678,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <div class="hero-meta-info">
         <div class="meta-block">
           <div class="label">Dates</div>
-          <div class="value">30 — 31 oct. 2026</div>
+          <div class="value">29 — 30 oct. 2027</div>
         </div>
         <div class="meta-block">
           <div class="label">Lieu</div>
@@ -1683,6 +1730,12 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
             À Saint-Étienne, terre d'industrie et de migrations, l'événement veut tisser
             des ponts concrets entre les Stéphanois d'origine et ceux issus des diasporas
             africaines, et renforcer ainsi la cohésion d'une ville qui regarde le monde.
+          </p>
+          <p class="context-org">
+            L'Université d'Automne est portée par
+            <a href="https://as-ai.fr/" target="_blank" rel="noopener noreferrer">ASAI
+            Saint-Étienne</a>, association engagée pour l'alphabétisation, les droits
+            et l'intégration.
           </p>
         </div>
       </div>
@@ -1830,10 +1883,10 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
 
     <div class="program-tabs reveal">
       <button class="tab-btn active" data-tab="day1">
-        Vendredi 30 oct. <em>— Jour 01</em>
+        Vendredi 29 oct. <em>— Jour 01</em>
       </button>
       <button class="tab-btn" data-tab="day2">
-        Samedi 31 oct. <em>— Jour 02</em>
+        Samedi 30 oct. <em>— Jour 02</em>
       </button>
     </div>
 
@@ -1857,7 +1910,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
         <div class="timeline-row">
           <div class="t-time">10h30</div>
           <div>
-            <div class="t-title">Keynote · Géopolitique africaine en 2026</div>
+            <div class="t-title">Keynote · Géopolitique africaine en 2027</div>
             <div class="t-desc">Cartographie des nouveaux rapports de force et place de l'Afrique dans le monde multipolaire.</div>
             <div class="t-speaker">Intervenant à confirmer</div>
           </div>
@@ -2334,7 +2387,12 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
       <img src="Logo_UA.png" alt="Université d'Automne">
       <p>
         Événement culturel, intellectuel et diplomatique réunissant
-        experts africains et français à Saint-Étienne les 30 et 31 octobre 2026.
+        experts africains et français à Saint-Étienne les 29 et 30 octobre 2027.
+      </p>
+      <p class="footer-org">
+        Un événement organisé par
+        <a href="https://as-ai.fr/" target="_blank" rel="noopener noreferrer">ASAI Saint-Étienne</a>
+        — Alphabétisation, droits et intégration.
       </p>
     </div>
 
@@ -2371,7 +2429,7 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
   </div>
 
   <div class="footer-bottom">
-    <div>© 2026 Université d'Automne · Saint-Étienne. Tous droits réservés.</div>
+    <div>© 2027 Université d'Automne · Saint-Étienne. Tous droits réservés.</div>
     <div>Réfléchir · Développer · Agir</div>
   </div>
 </footer>
