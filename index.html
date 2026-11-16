@@ -608,28 +608,42 @@ section { padding: 6rem var(--pad); position: relative; }
   margin-bottom: 1.25rem;
   line-height: 1.75;
 }
-.context-text p.context-org {
+.context-text .context-org {
   margin-top: 1.75rem;
   padding: 1.25rem 1.5rem;
   background: rgba(212, 146, 42, 0.08);
   border-left: 3px solid var(--ocre);
   border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+.context-text .context-org-logo {
+  flex-shrink: 0;
+  display: block;
+  line-height: 0;
+  padding: 0.5rem;
+  background: var(--paper);
+  border-radius: 4px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.context-text .context-org-logo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(27, 46, 75, 0.1);
+}
+.context-text .context-org-logo img {
+  display: block;
+  height: 72px;
+  width: auto;
+}
+.context-text .context-org p {
+  margin: 0;
   font-size: 0.98rem;
   font-style: italic;
   color: var(--navy);
+  line-height: 1.6;
 }
-.context-text p.context-org a {
-  color: var(--ocre-deep);
-  font-weight: 600;
-  font-style: normal;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.context-text p.context-org a:hover {
-  color: var(--navy);
-  text-decoration: underline;
-}
-.context-text p.context-org::first-letter {
+.context-text .context-org p::first-letter {
   font-family: inherit;
   font-size: inherit;
   float: none;
@@ -637,6 +651,27 @@ section { padding: 6rem var(--pad); position: relative; }
   margin: 0;
   line-height: inherit;
   font-weight: inherit;
+}
+.context-text .context-org a {
+  color: var(--ocre-deep);
+  font-weight: 600;
+  font-style: normal;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.context-text .context-org a:hover {
+  color: var(--navy);
+  text-decoration: underline;
+}
+@media (max-width: 600px) {
+  .context-text .context-org {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .context-text .context-org-logo img {
+    height: 60px;
+  }
 }
 .context-text p:first-of-type::first-letter {
   font-family: var(--font-display);
@@ -1731,12 +1766,17 @@ footer { background: var(--navy-deep); color: rgba(248, 246, 241, 0.7); padding:
             des ponts concrets entre les Stéphanois d'origine et ceux issus des diasporas
             africaines, et renforcer ainsi la cohésion d'une ville qui regarde le monde.
           </p>
-          <p class="context-org">
-            L'Université d'Automne est portée par
-            <a href="https://as-ai.fr/" target="_blank" rel="noopener noreferrer">ASAI
-            Saint-Étienne</a>, association engagée pour l'alphabétisation, les droits
-            et l'intégration.
-          </p>
+          <div class="context-org">
+            <a href="https://as-ai.fr/" target="_blank" rel="noopener noreferrer" class="context-org-logo">
+              <img src="logo-asai.png" alt="Logo ASAI Saint-Étienne">
+            </a>
+            <p>
+              L'Université d'Automne est portée par
+              <a href="https://as-ai.fr/" target="_blank" rel="noopener noreferrer">ASAI
+              Saint-Étienne</a>, association engagée pour l'alphabétisation, les droits
+              et l'intégration.
+            </p>
+          </div>
         </div>
       </div>
 
